@@ -1,0 +1,10 @@
+{# Browser tab title: the home page shows just the site name,
+   other pages show "page title — site name". #}
+{%- extends "!layout.html" %}
+{%- block htmltitle %}
+  {%- if pagename == root_doc %}
+  <title>{{ docstitle|striptags|e }}</title>
+  {%- else %}
+  {{ super() }}
+  {%- endif %}
+{%- endblock %}

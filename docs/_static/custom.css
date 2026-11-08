@@ -1,0 +1,225 @@
+/* Field Stack Robotics: turquoise + white on top of the PyData Sphinx Theme.
+   Change the colors here to restyle the whole site (light and dark mode). */
+html[data-theme="light"] {
+  /* Taken from the lighthouse logo: tower teal and deep teal */
+  --pst-color-primary: #0f766e;            /* links, active menu items */
+  --pst-color-primary-highlight: #0b3b38;
+  --pst-color-secondary: #0f766e;          /* hover, secondary accents ("Back to top" button) */
+  --pst-color-secondary-highlight: #0b3b38;
+  --pst-color-link: #0f766e;
+  --pst-color-link-hover: #0b3b38;
+  --pst-color-inline-code: #0c5f59;
+  --pst-color-text-base: #1c2b2a;
+  --pst-color-text-muted: #4f6462;
+  --pst-color-heading: #0b3b38;
+  --pst-color-border: #d5e4e1;
+  --pst-color-background: #ffffff;
+  --pst-color-on-background: #ffffff;
+  --pst-color-surface: #f3f8f7;
+  --rln-note-bg: #e4f0ee;
+}
+html[data-theme="dark"] {
+  --pst-color-primary: #3fd2c7;
+  --pst-color-primary-highlight: #6fe0d7;
+  --pst-color-secondary: #2bb8ae;
+  --pst-color-secondary-highlight: #3fd2c7;
+  --pst-color-link: #3fd2c7;
+  --pst-color-link-hover: #6fe0d7;
+  --pst-color-inline-code: #6fe0d7;
+  --pst-color-background: #0f1a1b;
+  --pst-color-on-background: #132223;
+  --pst-color-surface: #162728;
+  --rln-note-bg: #163a39;
+}
+
+/* Note boxes: same tint as the left sidebar */
+.admonition.note, div.admonition.note { border-color: var(--pst-color-primary); background-color: var(--rln-sidebar-bg); }
+.admonition.note > .admonition-title { background-color: var(--rln-sidebar-current) !important; }
+.admonition.note > .admonition-title::after, .admonition.note > .admonition-title::before { color: var(--pst-color-primary); }
+
+/* Email signup box */
+.signup { border: 1px solid var(--pst-color-border); border-radius: 6px; background: var(--rln-sidebar-bg); padding: 16px 18px; margin: 28px 0 8px; }
+.signup strong { display: block; font-size: 1.05rem; margin-bottom: 8px; }
+.signup form { display: flex; flex-wrap: wrap; gap: 8px; }
+.signup input[type="email"] { flex: 1 1 220px; padding: 6px 10px; border: 1px solid var(--pst-color-border); border-radius: 4px; background: var(--pst-color-background); color: var(--pst-color-text-base); }
+.signup button { background: var(--pst-color-primary); color: var(--pst-color-background); border: 0; border-radius: 4px; padding: 6px 16px; font-weight: 600; cursor: pointer; }
+.signup p { margin: 8px 0 0; font-size: 0.9rem; color: var(--pst-color-text-muted); }
+
+/* Home page cards, like Jupyter's "More information" grid */
+.sd-card { background: var(--rln-sidebar-bg); border-color: var(--pst-color-border); transition: border-color 0.15s, box-shadow 0.15s; }
+.sd-card:hover { border-color: var(--pst-color-primary); box-shadow: 0 2px 10px rgba(15, 118, 110, 0.15); }
+.sd-card .sd-card-title { color: var(--pst-color-primary); font-weight: 600; }
+.navbar-brand img { height: 32px; }
+
+/* ---------- Font: Inter everywhere, bold headings ---------- */
+html { --pst-font-family-base: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+       --pst-font-family-heading: var(--pst-font-family-base); }
+h1, h2, h3 { font-weight: 700; letter-spacing: -0.01em; }
+html[data-theme="light"] { --rln-header-bg: #ffffff; --rln-header-fg: #0b3b38; --rln-header-muted: rgba(11, 59, 56, 0.72); --rln-header-hover: rgba(15, 118, 110, 0.08); --rln-sidebar-bg: #e4f0ee; --rln-sidebar-current: #cbe3df; --rln-card-bg: #e4f0ee; }
+html[data-theme="dark"]  { --rln-header-bg: #12181a; --rln-header-fg: #ffffff; --rln-header-muted: rgba(255, 255, 255, 0.75); --rln-header-hover: rgba(255, 255, 255, 0.1); --rln-sidebar-bg: #15302e; --rln-sidebar-current: #1d4542; --rln-card-bg: #163a39; }
+
+/* ---------- Top bar: white (light) / near-black (dark), so the lighthouse logo stands out ---------- */
+.bd-header { background: var(--rln-header-bg) !important; border-bottom: 1px solid var(--pst-color-border); box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12); }
+.bd-header .bd-header__inner { max-width: 100%; padding-left: 1.5rem; padding-right: 1.5rem; }   /* logo at the left edge */
+.bd-header .navbar-brand img { height: 52px; }
+.bd-header .navbar-header-items__start { margin-right: 1.5rem; }
+/* Section links: light, thin and evenly spaced; the current one is plain white */
+.bd-header .navbar-nav { gap: 0.4rem; }
+.bd-header .navbar-nav .nav-link,
+.bd-header .navbar-nav .dropdown-toggle { color: var(--rln-header-muted) !important; font-weight: 400; font-size: 0.95rem; }
+.bd-header .navbar-nav .nav-link:hover,
+.bd-header .navbar-nav .current .nav-link,
+.bd-header .navbar-nav .active .nav-link { color: var(--rln-header-fg) !important; }
+.bd-header ul.navbar-nav > li.nav-item > .nav-link::before,
+.bd-header ul.navbar-nav > li.nav-item.current > .nav-link::before { display: none; border: 0; }   /* no underline under the current section */
+.bd-header .navbar-nav .current .nav-link { box-shadow: none; font-weight: 500; }
+.bd-header .navbar-header-items__end .nav-link,
+.bd-header .navbar-header-items__end i,
+.bd-header .theme-switch-button span,
+.bd-header .bd-header__inner button { color: var(--rln-header-fg) !important; }
+
+/* ---------- Left sidebar: own background, a line between it and the page ---------- */
+.bd-container .bd-page-width, .bd-container__inner { max-width: 100%; }   /* sidebar reaches the left edge */
+.bd-main .bd-content { justify-content: flex-start; }   /* page text starts right next to the left sidebar */
+.bd-main .bd-content .bd-article-container { margin-left: 0; }
+.bd-sidebar-primary .bd-search .search-button__kbd-shortcut { display: none; }
+.bd-sidebar-primary { flex: 0 0 16rem; max-width: 16rem; background: var(--rln-sidebar-bg);
+  border-right: 1px solid var(--pst-color-border); padding: 1.2rem 0.9rem; font-size: 0.88rem;
+  scrollbar-width: thin; scrollbar-color: transparent transparent; }
+.bd-sidebar-primary:hover { scrollbar-color: var(--pst-color-border) transparent; }
+.bd-sidebar-primary .bd-search { border-radius: 8px; background: var(--pst-color-background); margin-bottom: 1rem; }
+.bd-sidebar-primary nav.bd-links p.bd-links__title { display: none; }
+.bd-sidebar-primary nav.bd-links li > a { padding: 0.28rem 0.6rem; border-radius: 6px; color: var(--pst-color-text-muted); font-weight: 400; }
+.bd-sidebar-primary nav.bd-links li > a:hover { color: var(--pst-color-primary); background: none; text-decoration: none; }
+.bd-sidebar-primary nav.bd-links .toctree-l1 > a { color: var(--pst-color-text-base); font-weight: 500; margin-top: 0.3rem; }
+.bd-sidebar-primary nav.bd-links ul ul { padding-left: 0.7rem; }
+.bd-sidebar-primary nav.bd-links li > a.current,
+.bd-sidebar-primary nav.bd-links .current > a { color: var(--pst-color-primary); font-weight: 600; box-shadow: none; border: 0; background: none; }
+.bd-sidebar-primary nav.bd-links li > a.current { background: var(--rln-sidebar-current); }
+html[data-theme="light"] .bd-sidebar-primary nav.bd-links li > a.current { color: var(--pst-color-primary-highlight); }   /* darker text so it reads well on the highlight */
+
+/* ---------- Right sidebar: card on top, quiet "On this page" ---------- */
+.bd-sidebar-secondary { font-size: 0.85rem; }
+/* Line left of the card sits about halfway between the page text and the card */
+@media (min-width: 1200px) {
+  .bd-sidebar-secondary { --rln-line-gap: clamp(1rem, 4.5vw, 5.5rem); width: calc(17rem + var(--rln-line-gap) - 1rem); margin-left: auto; margin-right: clamp(1.5rem, 8vw, 10rem); }   /* toward the right, with some room on wide screens */
+  .bd-sidebar-secondary .sidebar-secondary-item { padding-left: var(--rln-line-gap); }
+}
+.bd-sidebar-secondary .onthispage { font-size: 0.85rem; font-weight: 600; }
+.bd-sidebar-secondary nav.page-toc a { color: var(--pst-color-text-muted); padding-top: 0.2rem; padding-bottom: 0.2rem; }
+.bd-sidebar-secondary nav.page-toc a:hover { color: var(--pst-color-primary); }
+.rln-card { background: var(--rln-card-bg); border: 1px solid var(--pst-color-primary); border-radius: 12px;
+  padding: 1rem 1.1rem 1.2rem; margin-bottom: 1.5rem; text-align: center; }
+.rln-card__title { font-weight: 700; font-size: 1rem; margin: 0 0 0.3rem; text-align: left; color: var(--pst-color-text-base); }
+.rln-card__text { font-size: 0.85rem; margin: 0 0 0.8rem; text-align: left; color: var(--pst-color-text-muted); }
+.rln-card__art { width: 96px; color: var(--pst-color-primary); margin: 0.2rem auto 0.9rem; display: block; }
+.rln-card__button { display: inline-block; background: var(--pst-color-primary); color: var(--pst-color-background) !important;
+  font-weight: 600; padding: 0.45rem 1.2rem; border-radius: 6px; text-decoration: none !important; }
+.rln-card__button:hover { filter: brightness(1.1); }
+
+/* ---------- GitHub box in the top bar ---------- */
+.rln-gh { display: flex; align-items: center; gap: 0.6rem; margin: 0 0.8rem; padding: 0.3rem 0.8rem 0.3rem 0.4rem;
+  border-radius: 10px; color: var(--rln-header-fg) !important; text-decoration: none !important; line-height: 1.2;
+  transition: background 0.15s; }
+.rln-gh:hover { background: var(--rln-header-hover); }
+.rln-gh__icon { display: grid; place-items: center; width: 2.1rem; height: 2.1rem; font-size: 1.75rem; transition: transform 0.2s; }
+.rln-gh:hover .rln-gh__icon { transform: rotate(-8deg) scale(1.08); }
+.rln-gh__text { display: flex; flex-direction: column; gap: 0.15rem; }
+.rln-gh__name { font-size: 0.85rem; font-weight: 500; letter-spacing: 0.01em; }
+.rln-gh__facts { display: flex; gap: 0.8rem; font-size: 0.75rem; color: var(--rln-header-muted); }
+.rln-gh__fact { display: inline-flex; align-items: center; gap: 0.3rem; }
+.rln-gh__fact[hidden] { display: none; }
+.rln-gh__fact i { font-size: 0.7rem; }
+.rln-gh__fact b { font-weight: 500; }
+@media (max-width: 1560px) { .rln-gh__text { display: none; } }   /* only the icon, so the section links stay on one line */
+/* Section links never wrap; they get tighter on narrower screens */
+.bd-header .navbar-nav .nav-link, .bd-header .navbar-nav .dropdown-toggle { white-space: nowrap; }
+@media (max-width: 1400px) {
+  .bd-header .navbar-nav { gap: 0; }
+  .bd-header .navbar-nav .nav-link, .bd-header .navbar-nav .dropdown-toggle { font-size: 0.85rem !important; }
+  .bd-header .navbar-header-items__start { margin-right: 0.5rem; }
+}
+/* No room for them below this width; the left sidebar lists every section anyway */
+@media (max-width: 1199.98px) { .bd-header .navbar-header-items__center { display: none; } }
+
+/* ---------- IMU widget: animated compass and horizon on the home page ---------- */
+.rln-imu { border: 1px solid var(--pst-color-border); border-radius: 10px; background: var(--rln-sidebar-bg); padding: 18px 20px 12px; margin: 24px 0 8px; }
+.rln-imu__instruments { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px 120px; }   /* 120px: space between the dials */
+.rln-imu__instrument { flex: 0 1 150px; min-width: 130px; display: flex; flex-direction: column; align-items: center; }   /* 150px: dial size */
+.rln-imu__instrument svg { display: block; width: 100%; height: auto; }
+.rln-imu__readout { display: inline-flex; align-items: baseline; gap: 8px; margin-top: 10px; padding: 4px 12px; border: 1px solid var(--pst-color-border); border-radius: 6px; background: var(--pst-color-background); white-space: nowrap; }
+.rln-imu__readout span { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--pst-color-text-muted); }
+.rln-imu__readout strong { font-size: 0.95rem; font-variant-numeric: tabular-nums; color: var(--pst-color-text-base); }
+.rln-imu__caption { margin: 12px 0 0; font-size: 0.85rem; text-align: center; color: var(--pst-color-text-muted); }
+.rln-imu__dial { fill: var(--pst-color-background); stroke: var(--pst-color-border); stroke-width: 2; }
+.rln-imu__tick { stroke: var(--pst-color-text-muted); stroke-width: 1.2; }
+.rln-imu__tick--major { stroke: var(--pst-color-text-base); stroke-width: 2.4; }
+.rln-imu__label { fill: var(--pst-color-text-base); font-size: 13px; font-weight: 700; text-anchor: middle; dominant-baseline: central; }
+.rln-imu__pointer { fill: var(--pst-color-primary); }
+.rln-imu__robot { fill: var(--pst-color-background); stroke: var(--pst-color-text-base); stroke-width: 4; }
+.rln-imu__wheel { fill: var(--pst-color-text-base); }
+.rln-imu__sky { fill: #8fdcd6; }
+.rln-imu__ground { fill: #0f766e; }
+.rln-imu__ladder { stroke: #ffffff; stroke-width: 1.6; }
+.rln-imu__ladder--zero { stroke-width: 2.4; }
+.rln-imu__ladder-text { fill: #ffffff; font-size: 11px; font-weight: 600; text-anchor: middle; dominant-baseline: central; }
+.rln-imu__symbol { fill: none; stroke: #16302f; stroke-width: 4.5; stroke-linecap: round; stroke-linejoin: round; }
+.rln-imu__bezel { fill: none; stroke: var(--pst-color-border); stroke-width: 2; }
+
+/* ---------- Charts (heading-chart.js) ---------- */
+/* Series colors: checked for color-blind readers in both modes (teal = gyro, violet = wheels) */
+html[data-theme="light"] .rln-chart { --rln-series-gyro: #00897b; --rln-series-wheel: #6250d6; }
+html[data-theme="dark"]  .rln-chart { --rln-series-gyro: #1fa89e; --rln-series-wheel: #9085e9; }
+.rln-chart { border: 1px solid var(--pst-color-border); border-radius: 10px; background: var(--pst-color-background); padding: 16px 18px 12px; margin: 20px 0; }
+.rln-chart__title { margin: 0; font-weight: 600; color: var(--pst-color-text-base); }
+.rln-chart__caption { margin: 2px 0 10px; font-size: 0.85rem; color: var(--pst-color-text-muted); }
+.rln-chart__legend { display: flex; gap: 18px; font-size: 0.85rem; color: var(--pst-color-text-base); margin-bottom: 4px; }
+.rln-chart__legend-item { display: inline-flex; align-items: center; gap: 6px; }
+.rln-chart__plot { position: relative; }
+.rln-chart__plot svg { display: block; width: 100%; height: auto; overflow: visible; }
+.rln-chart__grid { stroke: var(--pst-color-border); stroke-width: 1; }
+.rln-chart__axis { stroke: var(--pst-color-text-muted); stroke-width: 1; }
+.rln-chart__tick { fill: var(--pst-color-text-muted); font-size: 12px; }
+.rln-chart__direct { fill: var(--pst-color-text-base); font-size: 12px; font-weight: 600; }
+.rln-chart__line { fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.rln-chart__line--gyro { stroke: var(--rln-series-gyro); }
+.rln-chart__line--wheel { stroke: var(--rln-series-wheel); }
+.rln-chart__dot { stroke: var(--pst-color-background); stroke-width: 2; }
+.rln-chart__dot.rln-chart__line--gyro { fill: var(--rln-series-gyro); }
+.rln-chart__dot.rln-chart__line--wheel { fill: var(--rln-series-wheel); }
+.rln-chart__cross { stroke: var(--pst-color-text-muted); stroke-width: 1; stroke-dasharray: 3 3; }
+.rln-chart rect:focus { outline: none; }
+.rln-chart rect:focus-visible { outline: 2px solid var(--pst-color-primary); }
+.rln-chart__tip { position: absolute; top: 8px; pointer-events: none; min-width: 120px; padding: 8px 10px; border: 1px solid var(--pst-color-border); border-radius: 8px; background: var(--pst-color-background); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12); font-size: 0.8rem; }
+.rln-chart__tip-time { color: var(--pst-color-text-muted); margin-bottom: 4px; font-variant-numeric: tabular-nums; }
+.rln-chart__tip-row { display: flex; align-items: center; gap: 6px; color: var(--pst-color-text-muted); }
+.rln-chart__tip-row strong { color: var(--pst-color-text-base); font-variant-numeric: tabular-nums; min-width: 3.2em; }
+.rln-chart__table { margin-top: 8px; font-size: 0.85rem; }
+.rln-chart__table summary { cursor: pointer; color: var(--pst-color-link); }
+.rln-chart__table table { margin: 8px 0 0; font-variant-numeric: tabular-nums; }
+.rln-chart__table th, .rln-chart__table td { padding: 3px 18px 3px 0; text-align: right; }
+.rln-chart__table th:first-child, .rln-chart__table td:first-child { text-align: left; }
+
+/* ---------- Diagrams (inline SVG in the pages) ---------- */
+/* Same colors as the charts: violet = what the wheels say, teal = what really happened */
+html[data-theme="light"] .rln-diagram { --rln-series-gyro: #00897b; --rln-series-wheel: #6250d6; }
+html[data-theme="dark"]  .rln-diagram { --rln-series-gyro: #1fa89e; --rln-series-wheel: #9085e9; }
+.rln-diagram { border: 1px solid var(--pst-color-border); border-radius: 10px; background: var(--pst-color-background); padding: 14px 18px 12px; margin: 20px 0; }
+.rln-diagram svg { display: block; width: 100%; height: auto; }
+.rln-diagram figcaption { margin-top: 6px; font-size: 0.85rem; text-align: center; color: var(--pst-color-text-muted); }
+.rln-diagram__title { fill: var(--pst-color-text-base); font-size: 14px; font-weight: 600; }
+.rln-diagram__label { fill: var(--pst-color-text-base); font-size: 13px; }
+.rln-diagram__value { fill: var(--pst-color-text-base); font-size: 14px; font-weight: 700; }
+.rln-diagram__note { fill: var(--pst-color-text-muted); font-size: 12px; }
+.rln-diagram line, .rln-diagram__arc { fill: none; stroke-width: 2.5; stroke-linecap: round; }
+.rln-diagram__line--wheel { stroke: var(--rln-series-wheel); }
+.rln-diagram__line--real { stroke: var(--rln-series-gyro); }
+.rln-diagram__dashed { stroke-dasharray: 7 6; }
+.rln-diagram__arc { stroke-width: 2; }
+.rln-diagram__start { stroke: var(--pst-color-text-muted); stroke-width: 1.5; stroke-dasharray: 3 4; }
+.rln-diagram__gap { stroke: var(--pst-color-text-muted); stroke-width: 1.5; }
+.rln-diagram__divider { stroke: var(--pst-color-border); stroke-width: 1; }
+.rln-diagram__robot { fill: var(--pst-color-background); stroke: var(--pst-color-text-base); stroke-width: 2.5; }
+.rln-diagram__fill--wheel { fill: var(--rln-series-wheel); }
+.rln-diagram__fill--real { fill: var(--rln-series-gyro); }
+.rln-diagram__fill--muted { fill: var(--pst-color-text-muted); }

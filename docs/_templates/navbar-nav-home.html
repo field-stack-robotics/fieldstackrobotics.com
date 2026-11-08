@@ -1,0 +1,9 @@
+{# Top bar section links, with "Home" in front (like docs.nav2.org). #}
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    <li class="nav-item pst-header-nav-item{% if pagename == root_doc %} current active{% endif %}">
+      <a class="nav-link nav-internal" href="{{ pathto(root_doc) }}">Home</a>
+    </li>
+    {{ generate_header_nav_html(n_links_before_dropdown=theme_header_links_before_dropdown, dropdown_text=theme_header_dropdown_text) }}
+  </ul>
+</nav>

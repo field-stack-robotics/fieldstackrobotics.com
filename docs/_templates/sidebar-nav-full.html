@@ -1,0 +1,25 @@
+{# Left sidebar with the whole site, like docs.nav2.org.
+   The theme's default sidebar only shows the current section; startdepth=0 shows every section.
+   Sections start open; the arrows close them (see _static/sidebar-state.js). #}
+<nav class="bd-docs-nav bd-links" aria-label="{{ _('Site Navigation') }}">
+  <p class="bd-links__title" role="heading" aria-level="1">{{ _("Contents") }}</p>
+  <div class="bd-toc-item navbar-nav">
+    {#- Home link on top of the section list. -#}
+    {%- set is_home = pagename == root_doc %}
+    <ul class="nav bd-sidenav">
+      <li class="toctree-l1{% if is_home %} current active{% endif %}">
+        <a class="reference internal{% if is_home %} current{% endif %}" href="{{ pathto(root_doc) }}">{{ _("Home") }}</a>
+      </li>
+    </ul>
+    {{- generate_toctree_html(
+      "sidebar",
+      startdepth=0,
+      show_nav_level=theme_show_nav_level | int,
+      maxdepth=theme_navigation_depth | int,
+      collapse=False,
+      includehidden=True,
+      titles_only=True
+      )
+    -}}
+  </div>
+</nav>

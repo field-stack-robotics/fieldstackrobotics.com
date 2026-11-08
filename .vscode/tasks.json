@@ -1,0 +1,23 @@
+{
+  // Terminal > Run Task... > "Live preview"
+  // Builds the site and refreshes the browser every time you save a file.
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Live preview",
+      "type": "shell",
+      "command": "${command:python.interpreterPath}",
+      "args": ["-m", "sphinx_autobuild", "docs", "docs/_build/html", "--port", "8000"],
+      "isBackground": true,
+      "problemMatcher": [],
+      "group": { "kind": "build", "isDefault": true }
+    },
+    {
+      "label": "Build site once",
+      "type": "shell",
+      "command": "${command:python.interpreterPath}",
+      "args": ["-m", "sphinx", "-b", "html", "docs", "docs/_build/html"],
+      "problemMatcher": []
+    }
+  ]
+}

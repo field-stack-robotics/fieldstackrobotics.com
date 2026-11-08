@@ -1,0 +1,15 @@
+{# GitHub box in the top bar: repo name, latest release, stars and forks.
+   The repo is GITHUB_BOX_REPO in conf.py; the numbers come from _static/github-stats.js. #}
+<a class="rln-gh" href="https://github.com/{{ github_box_repo }}"
+   data-repo="{{ github_box_repo }}" target="_blank" rel="noopener" title="Go to GitHub">
+  <span class="rln-gh__icon"><i class="fa-brands fa-github" aria-hidden="true"></i></span>
+  <span class="rln-gh__text">
+    <span class="rln-gh__name">{{ github_box_repo }}</span>
+    <span class="rln-gh__facts">
+      <span class="rln-gh__fact" data-fact="version" hidden><i class="fa-solid fa-tag"></i><b></b></span>
+      <span class="rln-gh__fact" data-fact="repos" hidden><i class="fa-solid fa-book"></i><b></b></span>
+      <span class="rln-gh__fact" data-fact="stars"><i class="fa-regular fa-star"></i><b>–</b></span>
+      <span class="rln-gh__fact" data-fact="forks"><i class="fa-solid fa-code-fork"></i><b>–</b></span>
+    </span>
+  </span>
+</a>

@@ -1,0 +1,5 @@
+{
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv",
+  "files.exclude": { "docs/_build": true },
+  "editor.wordWrap": "on"
+}
