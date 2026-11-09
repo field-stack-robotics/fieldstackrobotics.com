@@ -18,6 +18,14 @@ a current sensor, a BNO055 IMU, a 2D LiDAR and a Raspberry Pi running ROS 2.
 <!-- Replace with a real photo: put robot.jpg in docs/_static/ and use
 ![The robot](_static/robot.jpg) -->
 
+<a class="rb-strip" href="robots/index.html">
+  <span class="rb-strip__head">The robots<span>See the roadmap →</span></span>
+  <span class="rb-strip__item rb-strip__item--now"><b>01</b>Indoor Robot<em><span class="rb-pulse"></span>Building now</em></span>
+  <span class="rb-strip__item"><b>02</b>Outdoor Rover<em>Next</em></span>
+  <span class="rb-strip__item rb-strip__item--hidden"><b>03</b><i>Tracked Robot</i><em>Later</em></span>
+  <span class="rb-strip__item rb-strip__item--hidden"><b>04</b><i>Surface Vessel</i><em>Side branch</em></span>
+</a>
+
 :::{note}
 Pages marked "coming soon" are on [the roadmap](getting-started/roadmap.md)
 but not written yet. Subscribe below to get them when they're out.
@@ -104,6 +112,7 @@ Nav2, indoor and outdoor with GPS + RTK, and field failures
 :maxdepth: 2
 :hidden:
 
+robots/index
 getting-started/index
 motors/index
 ros2/index

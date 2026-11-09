@@ -44,13 +44,16 @@ html_theme_options = {
         "image_dark": "_static/logo-dark.svg",
         "alt_text": "Field Stack Robotics - Home",
     },
+    # Thin bar above the top bar on every page. Delete this line to hide it.
+    "announcement": 'Model 1, the Field Stack indoor robot kit, is in the works. <a href="/robots/index.html">See all four robots →</a>',
     "navbar_align": "left",
     "header_links_before_dropdown": 10,  # show every section, no "More" menu
     "navbar_center": ["navbar-nav-home"],  # section links with "Home" in front
     "navbar_end": ["theme-switcher", "navbar-github", "navbar-icon-links"],
     "navbar_persistent": [],  # search lives at the top of the left sidebar
     # Right sidebar: card on top, then "On this page"
-    "secondary_sidebar_items": ["sidebar-card", "page-toc", "edit-this-page"],
+    # The robots page has no right sidebar, so its four cards get the full width.
+    "secondary_sidebar_items": {"**": ["sidebar-card", "page-toc", "edit-this-page"], "robots/index": []},
     "show_toc_level": 2,
     # Left sidebar: every section starts open, with its pages listed underneath (like docs.nav2.org)
     "show_nav_level": 2,
