@@ -22,7 +22,7 @@ html_theme = "pydata_sphinx_theme"
 html_title = "Field Stack Robotics"
 html_static_path = ["_static"]
 templates_path = ["_templates"]
-html_js_files = ["github-stats.js", "imu-widget.js", "sidebar-state.js", "theme-toggle.js", "heading-chart.js"]  # GitHub box numbers, home page IMU animation, left sidebar open/closed sections, light/dark button, heading error chart
+html_js_files = ["github-stats.js", "imu-widget.js", "sidebar-state.js", "theme-toggle.js", "heading-chart.js", "giscus-theme.js"]  # GitHub box numbers, home page IMU animation, left sidebar open/closed sections, light/dark button, heading error chart, comments light/dark
 html_css_files = [
     "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
     "custom.css",  # turquoise colors live here
@@ -66,6 +66,7 @@ html_theme_options = {
             "icon": "fa-brands fa-youtube",
         },
     ],
+    "article_footer_items": ["giscus"],  # comments under every page except home (_templates/giscus.html)
     "footer_start": ["copyright"],
     "footer_end": ["sphinx-version"],
 }

@@ -358,3 +358,7 @@ a.rb-strip:hover { border-color: var(--pst-color-primary); box-shadow: 0 4px 16p
 .bd-header-announcement a { color: var(--rb-accent) !important; font-weight: 600; }
 
 @media (prefers-reduced-motion: reduce) { .rb-pulse, .rb-art .rb-scan, .rb-art .rb-wave { animation: none; } .rb-card:hover { transform: none; } }
+
+/* Comments (giscus) under each page */
+.rln-comments { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--pst-color-border); }
+.rln-comments__title { font-size: 1.25rem; margin: 0 0 1rem; }
