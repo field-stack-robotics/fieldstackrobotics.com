@@ -44,6 +44,12 @@ html[data-theme="dark"] {
 .signup input[type="email"] { flex: 1 1 220px; padding: 6px 10px; border: 1px solid var(--pst-color-border); border-radius: 4px; background: var(--pst-color-background); color: var(--pst-color-text-base); }
 .signup button { background: var(--pst-color-primary); color: var(--pst-color-background); border: 0; border-radius: 4px; padding: 6px 16px; font-weight: 600; cursor: pointer; }
 .signup p { margin: 8px 0 0; font-size: 0.9rem; color: var(--pst-color-text-muted); }
+/* Kit form inside the box: no own background/padding, teal button (Kit sets inline styles, hence !important) */
+.signup .formkit-form { background: transparent !important; max-width: none !important; border: 0 !important; }
+.signup .formkit-form [data-style="clean"] { padding: 0 !important; }
+.signup .formkit-input { border-color: var(--pst-color-border) !important; background: var(--pst-color-background) !important; color: var(--pst-color-text-base) !important; border-radius: 4px !important; }
+.signup .formkit-submit { background-color: var(--pst-color-primary) !important; color: var(--pst-color-background) !important; border-radius: 4px !important; font-weight: 600 !important; }
+.signup .formkit-powered-by-convertkit-container { margin: 8px 0 0 !important; }
 
 /* Home page cards, like Jupyter's "More information" grid */
 .sd-card { background: var(--rln-sidebar-bg); border-color: var(--pst-color-border); transition: border-color 0.15s, box-shadow 0.15s; }
