@@ -8,3 +8,11 @@
   {{ super() }}
   {%- endif %}
 {%- endblock %}
+
+{# Coming soon pages: keep them out of Google until the post is written. #}
+{%- block extrahead %}
+  {{ super() }}
+  {%- if pagename in coming_soon_pages %}
+  <meta name="robots" content="noindex">
+  {%- endif %}
+{%- endblock %}

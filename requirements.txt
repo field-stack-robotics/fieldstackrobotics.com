@@ -3,3 +3,4 @@ pydata-sphinx-theme==0.16.1
 myst-parser==3.0.1
 sphinx-autobuild==2024.10.3
 sphinx-design==0.6.1
+sphinx-sitemap==2.9.0

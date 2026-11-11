@@ -8,6 +8,7 @@ copyright = "2026, Oguzhan Gurbuz"
 extensions = [
     "myst_parser",  # write pages in Markdown (.md)
     "sphinx_design",  # cards and grids on the home page
+    "sphinx_sitemap",  # writes sitemap.xml for Google Search Console
 ]
 
 # Markdown extras: :::{note} blocks, heading anchors, etc.
@@ -36,6 +37,27 @@ GITHUB_REPO = "fieldstackrobotics.com"
 GITHUB_BOX_REPO = "field-stack-robotics"
 
 html_favicon = "_static/favicon.svg"
+
+# --- Search engines: sitemap.xml and "coming soon" pages ---
+# The site's public address. sphinx-sitemap uses it to build full links.
+html_baseurl = "https://fieldstackrobotics.com/"
+sitemap_url_scheme = "{link}"
+html_extra_path = ["_extra"]  # robots.txt goes to the site root
+
+# A page is "coming soon" while it still holds the placeholder note.
+# These pages get a noindex tag (see _templates/layout.html) and stay out of
+# sitemap.xml. Once a post is written and the note is gone, it is indexed
+# automatically, nothing to change here.
+from pathlib import Path as _Path
+
+_DOCS = _Path(__file__).parent
+COMING_SOON_PAGES = sorted(
+    str(f.relative_to(_DOCS).with_suffix("")).replace("\\", "/")
+    for f in _DOCS.rglob("*.md")
+    if "_build" not in f.parts and "_snippets" not in f.parts
+    and "This post is coming soon" in f.read_text(encoding="utf-8")
+)
+sitemap_excludes = [f"{page}.html" for page in COMING_SOON_PAGES] + ["search.html", "genindex.html"]
 
 html_theme_options = {
     "logo": {
@@ -79,6 +101,7 @@ html_context = {
     "github_version": "main",
     "doc_path": "docs",
     "default_mode": "light",  # start in light mode; the button toggles light <-> dark (theme-toggle.js)
+    "coming_soon_pages": COMING_SOON_PAGES,  # these get a noindex tag (_templates/layout.html)
 }
 
 # Same left sidebar on every page, home page included: the whole site, one page under another.
