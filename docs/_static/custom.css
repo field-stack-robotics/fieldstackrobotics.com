@@ -374,3 +374,11 @@ a.rb-strip:hover { border-color: var(--pst-color-primary); box-shadow: 0 4px 16p
 /* Comments (giscus) under each page */
 .rln-comments { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--pst-color-border); }
 .rln-comments__title { font-size: 1.25rem; margin: 0 0 1rem; }
+
+/* Light/dark button (_templates/theme-switcher.html): same rounded hover as the GitHub and Discord boxes */
+.bd-header .rln-theme { display: grid !important; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 10px !important; transition: background 0.15s; box-shadow: none !important; border: 0 !important; }
+.bd-header .rln-theme::before, .bd-header .rln-theme::after { display: none !important; }
+.bd-header .rln-theme:hover { background: var(--rln-header-hover) !important; }
+.bd-header .rln-theme__icon { font-size: 1.25rem; transition: transform 0.25s; }
+.bd-header .rln-theme:hover .rln-theme__icon { transform: rotate(-20deg) scale(1.1); }
+html[data-theme="light"] .rln-theme__icon--to-light, html[data-theme="dark"] .rln-theme__icon--to-dark { display: none; }

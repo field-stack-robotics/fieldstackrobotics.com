@@ -23,7 +23,7 @@ html_theme = "pydata_sphinx_theme"
 html_title = "Field Stack Robotics"
 html_static_path = ["_static"]
 templates_path = ["_templates"]
-html_js_files = ["github-stats.js", "imu-widget.js", "sidebar-state.js", "theme-toggle.js", "heading-chart.js", "giscus-theme.js"]  # GitHub box numbers, home page IMU animation, left sidebar open/closed sections, light/dark button, heading error chart, comments light/dark
+html_js_files = ["imu-widget.js", "sidebar-state.js", "theme-toggle.js", "heading-chart.js", "giscus-theme.js"]  # home page IMU animation, left sidebar open/closed sections, light/dark button, heading error chart, comments light/dark
 html_css_files = [
     "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
     "custom.css",  # turquoise colors live here
@@ -32,8 +32,7 @@ html_css_files = [
 # GitHub organization and repository that hold this site.
 GITHUB_USER = "field-stack-robotics"
 GITHUB_REPO = "fieldstackrobotics.com"
-# Shown in the GitHub box in the top bar. "owner/repo" shows stars and forks;
-# an organization name alone shows its public repo count.
+# The GitHub box in the top bar links here (an organization or "owner/repo").
 GITHUB_BOX_REPO = "field-stack-robotics"
 # Discord server invite, used by the Discord box in the top bar (_templates/navbar-discord.html).
 DISCORD_INVITE = "https://discord.gg/NCBbzgu32"
@@ -72,7 +71,7 @@ html_theme_options = {
     "announcement": 'Model 1, the Field Stack indoor robot kit, is in the works. <a href="/robots/index.html">See all four robots →</a>',
     "navbar_align": "left",
     "navbar_center": ["navbar-nav-home"],  # Home, Robots, Start here, About & Contact (_templates/navbar-nav-home.html)
-    "navbar_end": ["theme-switcher", "navbar-github", "navbar-discord"],
+    "navbar_end": ["navbar-github", "navbar-discord", "theme-switcher"],  # light/dark button last (_templates/theme-switcher.html)
     "navbar_persistent": [],  # search lives at the top of the left sidebar
     # Right sidebar: card on top, then "On this page"
     # The robots page has no right sidebar, so its four cards get the full width.
