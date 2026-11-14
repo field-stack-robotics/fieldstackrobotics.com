@@ -84,13 +84,16 @@ def _coming_soon(app, docname, source):
     if not first_par or first_par[0] in ":`<!|{[(-*#":
         first_par = ""  # only keep a plain-text intro
     # Keep the section's page list so the left sidebar still works
-    toctrees = _re.findall(r"```\{toctree\}.*?```", text, flags=_re.S)
+    toctrees = [
+        _re.sub(r"(```\{toctree\}\n)", r"\1:hidden:\n", t, count=1) if ":hidden:" not in t else t
+        for t in _re.findall(r"```\{toctree\}.*?```", text, flags=_re.S)
+    ]  # hidden: the posts are only listed (not linked) in the left sidebar
     source[0] = "\n\n".join(
         part for part in [
             title,
             first_par,
             '<div class="rln-soon"><span class="rln-soon__badge">Coming soon</span>'
-            "<p>This post is being written. Model 1 is being built right now, "
+            f"<p>{'Posts in this section are' if docname.endswith('/index') else 'This post is'} being written. Model 1 is being built right now, "
             "and every step will be published here.</p></div>",
             "```{include} /_snippets/signup.md\n```",
             *toctrees,
@@ -98,8 +101,49 @@ def _coming_soon(app, docname, source):
     ) + "\n"
 
 
+def _is_unpublished_post(page):
+    """A coming soon page that is a post, not a section page (sections stay clickable)."""
+    return page in COMING_SOON_PAGES and page != "index" and not page.endswith("/index")
+
+
+def _target_page(pagename, href):
+    """Turn a relative link on `pagename` into the page it points to, e.g. "motors/encoder-basics"."""
+    import posixpath
+    href = href.split("#", 1)[0]
+    if not href or "://" in href or not href.endswith(".html"):
+        return None
+    return posixpath.normpath(posixpath.join(posixpath.dirname(pagename), href))[: -len(".html")]
+
+
+_SIDEBAR_SUBLINK = _re.compile(r'(<li class="toctree-l[2-9][^"]*">)<a class="([^"]*)" href="([^"]*)">(.*?)</a>', _re.S)
+
+
+def _sidebar_and_footer(app, pagename, templatename, context, doctree):
+    """Posts that aren't published yet are listed in the left sidebar as plain text
+    (not links), and the previous/next links at the bottom skip them."""
+
+    def unlink_posts(html):
+        def swap(m):
+            if not _is_unpublished_post(_target_page(pagename, m.group(3)) or ""):
+                return m.group(0)
+            current = " current" if "current" in m.group(2) else ""
+            return f'{m.group(1)}<span class="rln-nolink{current}">{m.group(4)}</span>'
+        return _SIDEBAR_SUBLINK.sub(swap, html)
+
+    if "generate_toctree_html" in context:
+        original = context["generate_toctree_html"]
+        from markupsafe import Markup
+        context["generate_toctree_html"] = lambda *a, **kw: Markup(unlink_posts(str(original(*a, **kw))))
+
+    for key in ("prev", "next"):
+        link = context.get(key)
+        if link and _is_unpublished_post(_target_page(pagename, link.get("link", "")) or ""):
+            context[key] = None
+
+
 def setup(app):
     app.connect("source-read", _coming_soon)
+    app.connect("html-page-context", _sidebar_and_footer, priority=900)
 
 
 sitemap_excludes = [f"{page}.html" for page in COMING_SOON_PAGES] + ["search.html", "genindex.html"]

@@ -258,7 +258,7 @@ html[data-theme="dark"]  { --rb-ink: #cfe9e6; --rb-body: #1d3433; --rb-panel: #4
   letter-spacing: 0.28em; text-transform: uppercase; color: var(--pst-color-primary); margin: 0 0 0.3rem; }
 .rb-hero__lead { font-size: 1.15rem; line-height: 1.55; color: var(--pst-color-text-muted); max-width: 46rem; margin: 0; }
 
-.bd-main .bd-content .bd-article-container:has(.rb-grid) { max-width: 82rem; }   /* robots page: use the full width */
+.bd-main .bd-content .bd-article-container:has(.rb-grid) { max-width: var(--rln-text-col, 82rem); }   /* robots page: use the full width */
 .bd-article-container:has(.rb-grid) section > p, .rb-waitlist { max-width: 50rem; }   /* keep text lines readable on the wide page */
 .rb-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.1rem; margin: 0 0 1rem; }
 @media (max-width: 1280px) { .rb-grid { grid-template-columns: repeat(2, 1fr); } }   /* 2 x 2, never 3 + 1 */
@@ -390,10 +390,11 @@ html[data-theme="light"] .rln-theme__icon--to-light, html[data-theme="dark"] .rl
    Sidebars and the text column are in rem, so they scale with it: about 95 characters per line
    and the same gap between text and the right panel on every screen. */
 html { font-size: clamp(1rem, 0.7rem + 0.3333vw, 1.125rem); }
+html { scrollbar-gutter: stable; }   /* short and long pages keep the same width, so nothing shifts when a scrollbar appears */
 @media (min-width: 1200px) {
   :root { --rln-text-col: 50rem; --rln-right-col: 18rem;
           --rln-center-pad: max(0px, (100vw - 16rem - var(--rln-text-col) - var(--rln-right-col)) / 2); }
-  :root:has(.rb-grid) { --rln-text-col: 82rem; --rln-right-col: 0rem; }   /* robots page: wide card grid, no right panel */
+  :root:has(.rb-grid) { --rln-text-col: 68rem; --rln-right-col: 0rem; }   /* robots page: no right panel, the card grid takes its width too, so the page starts at the same place as the others */
   .bd-main .bd-content { justify-content: center; }   /* text and right panel sit together, centred */
   .bd-main .bd-content .bd-article-container { flex: 1 1 auto; max-width: var(--rln-text-col); }
   .bd-sidebar-secondary { --rln-line-gap: 2rem; width: var(--rln-right-col); margin-left: 0; margin-right: 0; }
@@ -407,3 +408,6 @@ html { font-size: clamp(1rem, 0.7rem + 0.3333vw, 1.125rem); }
   letter-spacing: 0.14em; text-transform: uppercase; padding: 0.25rem 0.65rem; border-radius: 999px; background: var(--rb-dark, #1f3b3a); color: #fff; }
 html[data-theme="dark"] .rln-soon__badge { background: var(--pst-color-primary); color: #0f1a1b; }
 .rln-soon p { margin: 0.6rem 0 0; color: var(--pst-color-text-muted); }
+
+/* Left sidebar: posts that aren't published yet are listed as plain text (see _sidebar_and_footer() in conf.py) */
+.bd-sidebar-primary nav.bd-links li > span.rln-nolink { display: block; padding: 0.28rem 0.6rem; color: var(--pst-color-text-muted); opacity: 0.75; cursor: default; }
