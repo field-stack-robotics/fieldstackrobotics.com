@@ -110,7 +110,9 @@ def _target_page(pagename, href):
     """Turn a relative link on `pagename` into the page it points to, e.g. "motors/encoder-basics"."""
     import posixpath
     href = href.split("#", 1)[0]
-    if not href or "://" in href or not href.endswith(".html"):
+    if not href:
+        return pagename  # "#" = the page you are on
+    if "://" in href or not href.endswith(".html"):
         return None
     return posixpath.normpath(posixpath.join(posixpath.dirname(pagename), href))[: -len(".html")]
 
