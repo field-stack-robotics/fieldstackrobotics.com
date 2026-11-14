@@ -64,8 +64,8 @@ sitemap_excludes = [f"{page}.html" for page in COMING_SOON_PAGES] + ["search.htm
 html_theme_options = {
     "logo": {
         # Dark text on the white top bar, light text on the dark one
-        "image_light": "_static/logo-light.svg",
-        "image_dark": "_static/logo-dark.svg",
+        "image_light": "_static/logo-stacked-light.svg",
+        "image_dark": "_static/logo-stacked-dark.svg",
         "alt_text": "Field Stack Robotics - Home",
     },
     # Thin bar above the top bar on every page. Delete this line to hide it.
