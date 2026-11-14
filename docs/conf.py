@@ -83,9 +83,9 @@ html_theme_options = {
     "use_edit_page_button": True,
     "icon_links": [
         {
-            "name": "YouTube",
-            "url": "https://www.youtube.com/",  # your channel
-            "icon": "fa-brands fa-youtube",
+            "name": "Discord",
+            "url": "https://discord.gg/NCBbzgu32",  # server invite link
+            "icon": "fa-brands fa-discord",
         },
     ],
     "article_footer_items": ["giscus"],  # comments under every page except home (_templates/giscus.html)
