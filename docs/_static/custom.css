@@ -69,6 +69,10 @@ html[data-theme="dark"]  { --rln-header-bg: #12181a; --rln-header-fg: #ffffff; -
 .bd-header .bd-header__inner { max-width: 100%; padding-left: 1.5rem; padding-right: 1.5rem; }   /* logo at the left edge */
 .bd-header .navbar-brand img { height: 52px; }
 .bd-header .navbar-header-items__start { margin-right: 1.5rem; }
+/* Logo column is as wide as the left sidebar, so the top bar links start in line with the page title */
+@media (min-width: 1200px) {
+  .bd-header .navbar-header-items__start { flex: 0 0 auto; width: calc(16rem - 1.5rem); margin-right: 2rem !important; }
+}
 /* Section links: light, thin and evenly spaced; the current one is plain white */
 .bd-header .navbar-nav { gap: 0.4rem; }
 .bd-header .navbar-nav .nav-link,
@@ -146,7 +150,6 @@ html[data-theme="light"] .bd-sidebar-primary nav.bd-links li > a.current { color
 @media (max-width: 1400px) {
   .bd-header .navbar-nav { gap: 0; }
   .bd-header .navbar-nav .nav-link, .bd-header .navbar-nav .dropdown-toggle { font-size: 0.85rem !important; }
-  .bd-header .navbar-header-items__start { margin-right: 0.5rem; }
 }
 /* Theme button, GitHub and Discord always stay on one line, side by side */
 .bd-header .navbar-header-items__end { flex-wrap: nowrap; flex-shrink: 0; }
