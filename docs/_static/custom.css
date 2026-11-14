@@ -382,3 +382,19 @@ a.rb-strip:hover { border-color: var(--pst-color-primary); box-shadow: 0 4px 16p
 .bd-header .rln-theme__icon { font-size: 1.25rem; transition: transform 0.25s; }
 .bd-header .rln-theme:hover .rln-theme__icon { transform: rotate(-20deg) scale(1.1); }
 html[data-theme="light"] .rln-theme__icon--to-light, html[data-theme="dark"] .rln-theme__icon--to-dark { display: none; }
+
+/* ---------- Fluid layout: the page keeps the same proportions on every screen (like docs.nav2.org) ----------
+   Base text size: 16px up to ~1440px wide, then grows to 17.6px at 1920px and 18px at most.
+   Sidebars and the text column are in rem, so they scale with it: about 95 characters per line
+   and the same gap between text and the right panel on every screen. */
+html { font-size: clamp(1rem, 0.7rem + 0.3333vw, 1.125rem); }
+@media (min-width: 1200px) {
+  :root { --rln-text-col: 50rem; --rln-right-col: 18rem;
+          --rln-center-pad: max(0px, (100vw - 16rem - var(--rln-text-col) - var(--rln-right-col)) / 2); }
+  :root:has(.rb-grid) { --rln-text-col: 82rem; --rln-right-col: 0rem; }   /* robots page: wide card grid, no right panel */
+  .bd-main .bd-content { justify-content: center; }   /* text and right panel sit together, centred */
+  .bd-main .bd-content .bd-article-container { flex: 1 1 auto; max-width: var(--rln-text-col); }
+  .bd-sidebar-secondary { --rln-line-gap: 2rem; width: var(--rln-right-col); margin-left: 0; margin-right: 0; }
+  /* top bar links stay in line with the page title */
+  .bd-header .navbar-header-items__start { margin-right: calc(2rem + var(--rln-center-pad)) !important; }
+}
