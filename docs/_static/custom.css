@@ -145,6 +145,17 @@ html[data-theme="light"] .bd-sidebar-primary nav.bd-links li > a.current { color
   .bd-header .navbar-nav .nav-link, .bd-header .navbar-nav .dropdown-toggle { font-size: 0.85rem !important; }
   .bd-header .navbar-header-items__start { margin-right: 0.5rem; }
 }
+/* Theme button, GitHub and Discord always stay on one line, side by side */
+.bd-header .navbar-header-items__end { flex-wrap: nowrap; flex-shrink: 0; }
+.bd-header .navbar-header-items__end .navbar-item { flex-shrink: 0; }
+@media (max-width: 1360px) {   /* tighter spacing so everything fits on one line down to 1200px */
+  .bd-header .navbar-brand img { height: 44px; }
+  .bd-header .navbar-nav .nav-link { padding-left: 0.3rem !important; padding-right: 0.3rem !important; }
+  .bd-header .navbar-header-items__end { gap: 0.2rem; }
+  .bd-header .rln-gh { margin: 0 0.1rem; padding: 0.3rem; }
+  .bd-header .navbar-icon-links { gap: 0; }
+  .bd-header .navbar-icon-links .nav-link { padding-left: 0.3rem; padding-right: 0.3rem; }
+}
 /* No room for them below this width; the left sidebar lists every section anyway */
 @media (max-width: 1199.98px) { .bd-header .navbar-header-items__center { display: none; } }
 
