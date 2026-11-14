@@ -400,3 +400,10 @@ html { font-size: clamp(1rem, 0.7rem + 0.3333vw, 1.125rem); }
   /* top bar links stay in line with the page title */
   .bd-header .navbar-header-items__start { margin-right: calc(2rem + var(--rln-center-pad)) !important; }
 }
+
+/* Coming soon note (built by _coming_soon() in conf.py for pages not in PUBLISHED_PAGES) */
+.rln-soon { border: 1px dashed var(--pst-color-primary); border-radius: 10px; padding: 1rem 1.2rem; margin: 1.2rem 0 0.4rem; background: var(--pst-color-background); }
+.rln-soon__badge { display: inline-block; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase; padding: 0.25rem 0.65rem; border-radius: 999px; background: var(--rb-dark, #1f3b3a); color: #fff; }
+html[data-theme="dark"] .rln-soon__badge { background: var(--pst-color-primary); color: #0f1a1b; }
+.rln-soon p { margin: 0.6rem 0 0; color: var(--pst-color-text-muted); }

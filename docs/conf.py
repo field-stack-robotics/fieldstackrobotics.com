@@ -45,19 +45,63 @@ html_baseurl = "https://fieldstackrobotics.com/"
 sitemap_url_scheme = "{link}"
 html_extra_path = ["_extra"]  # robots.txt goes to the site root
 
-# A page is "coming soon" while it still holds the placeholder note.
-# These pages get a noindex tag (see _templates/layout.html) and stay out of
-# sitemap.xml. Once a post is written and the note is gone, it is indexed
-# automatically, nothing to change here.
+# --- Published pages and "coming soon" pages ---
+# Only the pages listed here are shown in full. Every other page is built as a
+# "coming soon" page: its title and first paragraph, a coming soon note and the
+# email box. The draft text stays in the .md file but is not published anywhere
+# (not on the page, not in search, not in Google).
+# To publish a post when it's ready, add its path here (without .md).
+PUBLISHED_PAGES = {
+    "index",
+    "about",
+    "robots/index",
+    "robots/model-1",
+}
+
+import re as _re
 from pathlib import Path as _Path
 
 _DOCS = _Path(__file__).parent
 COMING_SOON_PAGES = sorted(
-    str(f.relative_to(_DOCS).with_suffix("")).replace("\\", "/")
-    for f in _DOCS.rglob("*.md")
-    if "_build" not in f.parts and "_snippets" not in f.parts
-    and "This post is coming soon" in f.read_text(encoding="utf-8")
+    page
+    for page in (
+        str(f.relative_to(_DOCS).with_suffix("")).replace("\\", "/")
+        for f in _DOCS.rglob("*.md")
+        if "_build" not in f.parts and "_snippets" not in f.parts
+    )
+    if page not in PUBLISHED_PAGES
 )
+
+
+def _coming_soon(app, docname, source):
+    """Swap the body of an unpublished page for the coming soon version."""
+    if docname in PUBLISHED_PAGES:
+        return
+    text = source[0]
+    title = next((line for line in text.splitlines() if line.startswith("# ")), "# Coming soon")
+    after_title = text.split(title, 1)[-1].strip()
+    first_par = after_title.split("\n\n", 1)[0].strip() if after_title else ""
+    if not first_par or first_par[0] in ":`<!|{[(-*#":
+        first_par = ""  # only keep a plain-text intro
+    # Keep the section's page list so the left sidebar still works
+    toctrees = _re.findall(r"```\{toctree\}.*?```", text, flags=_re.S)
+    source[0] = "\n\n".join(
+        part for part in [
+            title,
+            first_par,
+            '<div class="rln-soon"><span class="rln-soon__badge">Coming soon</span>'
+            "<p>This post is being written. Model 1 is being built right now, "
+            "and every step will be published here.</p></div>",
+            "```{include} /_snippets/signup.md\n```",
+            *toctrees,
+        ] if part
+    ) + "\n"
+
+
+def setup(app):
+    app.connect("source-read", _coming_soon)
+
+
 sitemap_excludes = [f"{page}.html" for page in COMING_SOON_PAGES] + ["search.html", "genindex.html"]
 
 html_theme_options = {

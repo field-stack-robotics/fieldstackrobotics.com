@@ -14,5 +14,6 @@
   {{ super() }}
   {%- if pagename in coming_soon_pages %}
   <meta name="robots" content="noindex">
+  <style>.editthispage { display: none; }</style>{# no "Edit on GitHub" link to the draft #}
   {%- endif %}
 {%- endblock %}
