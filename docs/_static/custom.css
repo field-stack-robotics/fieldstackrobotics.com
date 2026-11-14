@@ -411,3 +411,13 @@ html[data-theme="dark"] .rln-soon__badge { background: var(--pst-color-primary);
 
 /* Left sidebar: posts that aren't published yet are listed as plain text (see _sidebar_and_footer() in conf.py) */
 .bd-sidebar-primary nav.bd-links li > span.rln-nolink { display: block; padding: 0.28rem 0.6rem; color: var(--pst-color-text-muted); opacity: 0.75; cursor: default; }
+
+/* Email box: title line, and the email field + Subscribe button on one row (stacked on phones) */
+.signup .signup__title { margin: 0 0 10px; font-size: 1.02rem; color: var(--pst-color-text-muted); }
+.signup .signup__title strong { display: inline; margin: 0; color: var(--pst-color-text-base); }
+@media (min-width: 640px) {
+  .signup .formkit-form .formkit-fields { display: flex !important; flex-wrap: nowrap !important; gap: 8px; align-items: stretch; }
+  .signup .formkit-form .formkit-fields .formkit-field { flex: 1 1 auto !important; margin: 0 !important; }
+  .signup .formkit-form .formkit-fields .formkit-submit { flex: 0 0 auto !important; width: auto !important; margin: 0 !important; padding-left: 1.6rem !important; padding-right: 1.6rem !important; }
+}
+html[data-theme="dark"] .signup .formkit-powered-by-convertkit { filter: invert(1) opacity(0.7); }   /* "Built with Kit" was dark on dark */

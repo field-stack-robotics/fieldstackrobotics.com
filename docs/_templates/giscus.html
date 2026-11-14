@@ -1,7 +1,7 @@
-{# Comments under every page except the home page and coming soon pages. Comments are stored in
+{# Comments under every page except the home page, About & Contact, Join and coming soon pages. Comments are stored in
    GitHub Discussions (Announcements category) of the site repo; settings come from giscus.app.
    _static/giscus-theme.js keeps the comment box in light/dark mode with the site. #}
-{%- if pagename != root_doc and pagename not in coming_soon_pages %}
+{%- if pagename not in [root_doc, "about", "join"] and pagename not in coming_soon_pages %}
 <section class="rln-comments" aria-label="Comments">
   <h2 class="rln-comments__title">Comments</h2>
   <script>

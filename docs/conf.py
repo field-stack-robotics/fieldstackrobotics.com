@@ -56,6 +56,7 @@ PUBLISHED_PAGES = {
     "about",
     "robots/index",
     "robots/model-1",
+    "join",
 }
 
 import re as _re

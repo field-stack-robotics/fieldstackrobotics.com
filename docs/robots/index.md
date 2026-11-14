@@ -146,23 +146,8 @@ this site runs on Model 1 first.
 (waitlist)=
 ## Get notified
 
-<div class="signup rb-waitlist">
-  <strong>Be the first to see the next robot</strong>
-  <!-- Replace the action with your email service's form URL (same as _snippets/signup.md).
-       The checkboxes are sent as "interest" so you can see which model people want most. -->
-  <form action="https://example.com/REPLACE-WITH-YOUR-FORM-URL" method="post">
-    <fieldset class="rb-waitlist__models">
-      <legend>I'm interested in</legend>
-      <label><input type="checkbox" name="interest" value="model-1" checked> Model 1 kit</label>
-      <label><input type="checkbox" name="interest" value="model-2"> Model 2 rover</label>
-      <label><input type="checkbox" name="interest" value="model-3"> Model 3 tracked</label>
-      <label><input type="checkbox" name="interest" value="model-4"> Model 4 boat</label>
-    </fieldset>
-    <input type="email" name="email" placeholder="you@example.com" required aria-label="Email address">
-    <button type="submit">Notify me</button>
-  </form>
-  <p>One email when a model is revealed or ready to order. No spam, unsubscribe anytime.</p>
-</div>
+```{include} ../_snippets/signup.md
+```
 
 ```{toctree}
 :hidden:
