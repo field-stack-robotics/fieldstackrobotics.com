@@ -61,6 +61,8 @@ html[data-theme="dark"] {
 html { --pst-font-family-base: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
        --pst-font-family-heading: var(--pst-font-family-base); }
 h1, h2, h3 { font-weight: 700; letter-spacing: -0.01em; }
+/* Heading sizes: calmer than the theme default (42/34/28px), close to docs.nav2.org. In rem, so they grow with the fluid text size. */
+html { --pst-font-size-h1: 2.125rem; --pst-font-size-h2: 1.625rem; --pst-font-size-h3: 1.3rem; --pst-font-size-h4: 1.125rem; }
 html[data-theme="light"] { --rln-header-bg: #ffffff; --rln-header-fg: #0b3b38; --rln-header-muted: rgba(11, 59, 56, 0.72); --rln-header-hover: rgba(15, 118, 110, 0.08); --rln-sidebar-bg: #e4f0ee; --rln-sidebar-current: #cbe3df; --rln-card-bg: #e4f0ee; }
 html[data-theme="dark"]  { --rln-header-bg: #12181a; --rln-header-fg: #ffffff; --rln-header-muted: rgba(255, 255, 255, 0.75); --rln-header-hover: rgba(255, 255, 255, 0.1); --rln-sidebar-bg: #15302e; --rln-sidebar-current: #1d4542; --rln-card-bg: #163a39; }
 
