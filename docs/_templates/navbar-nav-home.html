@@ -1,9 +1,19 @@
-{# Top bar section links, with "Home" in front (like docs.nav2.org). #}
+{# Top bar links. Kept short on purpose: the article sections (Motors, ROS 2, ...)
+   live in the left sidebar. To add a link, add a (title, page) pair below. #}
+{%- set top_links = [
+  ("Home", root_doc),
+  ("Robots", "robots/index"),
+  ("Start here", "getting-started/index"),
+  ("About & Contact", "about"),
+] %}
 <nav>
   <ul class="bd-navbar-elements navbar-nav">
-    <li class="nav-item pst-header-nav-item{% if pagename == root_doc %} current active{% endif %}">
-      <a class="nav-link nav-internal" href="{{ pathto(root_doc) }}">Home</a>
+    {%- for title, page in top_links %}
+    {%- set section = page.rsplit("/", 1)[0] if "/" in page else page %}
+    {%- set is_current = pagename == page or (page != root_doc and "/" in page and pagename.startswith(section ~ "/")) %}
+    <li class="nav-item pst-header-nav-item{% if is_current %} current active{% endif %}">
+      <a class="nav-link nav-internal" href="{{ pathto(page) }}">{{ title }}</a>
     </li>
-    {{ generate_header_nav_html(n_links_before_dropdown=theme_header_links_before_dropdown, dropdown_text=theme_header_dropdown_text) }}
+    {%- endfor %}
   </ul>
 </nav>

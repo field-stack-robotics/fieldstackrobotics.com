@@ -2,7 +2,7 @@
 // Results are kept for an hour so the GitHub API isn't called on every page.
 document.addEventListener("DOMContentLoaded", function () {
   // The box is in the top bar and again in the mobile menu
-  const boxes = document.querySelectorAll(".rln-gh");
+  const boxes = document.querySelectorAll(".rln-gh[data-repo]");   // GitHub box only, not the Discord one
   if (!boxes.length) return;
   const repo = boxes[0].dataset.repo;
   const key = "rln-gh:" + repo;
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function show(facts) {
     for (const [name, value] of Object.entries(facts)) {
       if (value === undefined || value === null) continue;
-      for (const el of document.querySelectorAll(`.rln-gh [data-fact="${name}"]`)) {
+      for (const el of document.querySelectorAll(`.rln-gh[data-repo] [data-fact="${name}"]`)) {
         el.querySelector("b").textContent = value;
         el.hidden = false;
       }
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // "owner/repo" -> repo box, a bare name -> organization box
   if (!repo.includes("/")) {
     for (const name of ["stars", "forks"])
-      for (const el of document.querySelectorAll(`.rln-gh [data-fact="${name}"]`)) el.hidden = true;
+      for (const el of document.querySelectorAll(`.rln-gh[data-repo] [data-fact="${name}"]`)) el.hidden = true;
     if (saved && Date.now() - saved.time < 3600 * 1000) return show(saved.facts);
     fetch("https://api.github.com/orgs/" + repo)
       .then((r) => (r.ok ? r.json() : null))

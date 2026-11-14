@@ -35,6 +35,8 @@ GITHUB_REPO = "fieldstackrobotics.com"
 # Shown in the GitHub box in the top bar. "owner/repo" shows stars and forks;
 # an organization name alone shows its public repo count.
 GITHUB_BOX_REPO = "field-stack-robotics"
+# Discord server invite, used by the Discord box in the top bar (_templates/navbar-discord.html).
+DISCORD_INVITE = "https://discord.gg/NCBbzgu32"
 
 html_favicon = "_static/favicon.svg"
 
@@ -69,9 +71,8 @@ html_theme_options = {
     # Thin bar above the top bar on every page. Delete this line to hide it.
     "announcement": 'Model 1, the Field Stack indoor robot kit, is in the works. <a href="/robots/index.html">See all four robots →</a>',
     "navbar_align": "left",
-    "header_links_before_dropdown": 10,  # show every section, no "More" menu
-    "navbar_center": ["navbar-nav-home"],  # section links with "Home" in front
-    "navbar_end": ["theme-switcher", "navbar-github", "navbar-icon-links"],
+    "navbar_center": ["navbar-nav-home"],  # Home, Robots, Start here, About & Contact (_templates/navbar-nav-home.html)
+    "navbar_end": ["theme-switcher", "navbar-github", "navbar-discord"],
     "navbar_persistent": [],  # search lives at the top of the left sidebar
     # Right sidebar: card on top, then "On this page"
     # The robots page has no right sidebar, so its four cards get the full width.
@@ -81,13 +82,6 @@ html_theme_options = {
     "show_nav_level": 2,
     "navigation_depth": 3,
     "use_edit_page_button": True,
-    "icon_links": [
-        {
-            "name": "Discord",
-            "url": "https://discord.gg/NCBbzgu32",  # server invite link
-            "icon": "fa-brands fa-discord",
-        },
-    ],
     "article_footer_items": ["giscus"],  # comments under every page except home (_templates/giscus.html)
     "footer_start": ["copyright"],
     "footer_end": ["sphinx-version"],
@@ -96,6 +90,7 @@ html_theme_options = {
 # Used by the "Edit on GitHub" button.
 html_context = {
     "github_box_repo": GITHUB_BOX_REPO,
+    "discord_invite": DISCORD_INVITE,
     "github_user": GITHUB_USER,
     "github_repo": GITHUB_REPO,
     "github_version": "main",
