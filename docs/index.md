@@ -7,7 +7,7 @@ along the way. The goal is simple: make an autonomous robot work reliably in the
 world, outside the simulator, and write down every step so you can do the same.
 
 <div class="rln-imu" data-rln-imu>
-  <p class="rln-imu__caption">Simulated demo. Real IMU recordings are coming.</p>
+  <p class="rln-imu__caption">A preview of the robot's IMU</p>
 </div>
 
 ## What is this robot?
