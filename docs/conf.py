@@ -55,7 +55,6 @@ PUBLISHED_PAGES = {
     "index",
     "about",
     "robots/index",
-    "robots/model-1",
     "join",
 }
 

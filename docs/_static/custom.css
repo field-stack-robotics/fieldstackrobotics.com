@@ -421,3 +421,5 @@ html[data-theme="dark"] .rln-soon__badge { background: var(--pst-color-primary);
   .signup .formkit-form .formkit-fields .formkit-submit { flex: 0 0 auto !important; width: auto !important; margin: 0 !important; padding-left: 1.6rem !important; padding-right: 1.6rem !important; }
 }
 html[data-theme="dark"] .signup .formkit-powered-by-convertkit { filter: invert(1) opacity(0.7); }   /* "Built with Kit" was dark on dark */
+.rb-card span.rb-card__cta--soon { align-self: flex-start; font-weight: 600; font-size: 0.9rem; padding: 0.45rem 0.9rem; border-radius: 8px;
+  border: 1px dashed var(--pst-color-primary); color: var(--pst-color-primary); cursor: default; }   /* Model 1 page not published yet */

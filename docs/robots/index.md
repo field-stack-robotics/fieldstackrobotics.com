@@ -39,7 +39,7 @@
     <li>Add-on: warehouse and fleet pack</li>
   </ul>
   <p class="rb-card__for">For students, researchers and teaching labs</p>
-  <a class="rb-card__cta" href="model-1.html">Meet Model 1 →</a>
+  <span class="rb-card__cta rb-card__cta--soon">Details coming soon</span>
 </article>
 <article class="rb-card">
   <header class="rb-card__top"><span class="rb-card__num">02</span><span class="rb-badge">Next</span></header>
