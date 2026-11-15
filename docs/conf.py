@@ -149,7 +149,10 @@ def setup(app):
     app.connect("html-page-context", _sidebar_and_footer, priority=900)
 
 
-sitemap_excludes = [f"{page}.html" for page in COMING_SOON_PAGES] + ["search.html", "genindex.html"]
+# Published pages that are still only a teaser: shown in full, but kept out of Google
+# (noindex + not in sitemap.xml) until there is something real on them.
+NOINDEX_PAGES = {"try"}  # remove "try" when the simulator is live
+sitemap_excludes = [f"{page}.html" for page in COMING_SOON_PAGES + sorted(NOINDEX_PAGES)] + ["search.html", "genindex.html"]
 
 html_theme_options = {
     "logo": {
@@ -188,6 +191,7 @@ html_context = {
     "doc_path": "docs",
     "default_mode": "light",  # start in light mode; the button toggles light <-> dark (theme-toggle.js)
     "coming_soon_pages": COMING_SOON_PAGES,  # these get a noindex tag (_templates/layout.html)
+    "noindex_pages": sorted(NOINDEX_PAGES),
 }
 
 # Same left sidebar on every page, home page included: the whole site, one page under another.

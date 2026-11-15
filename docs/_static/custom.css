@@ -446,7 +446,8 @@ html[data-theme="dark"] .signup .formkit-powered-by-convertkit { filter: invert(
   background: var(--rb-accent); color: #fff; }
 .rln-try__lead { font-size: 1.15rem; line-height: 1.55; color: var(--pst-color-text-muted); margin: 0 0 1.4rem; }
 .rln-try__phone { display: none; }   /* shown on phones only, below */
-.rln-try__steps { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.1rem; margin: 0 0 2rem; }
+.rln-try__steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 0 0 2rem; }
+@media (max-width: 1350px) { .rln-try__steps { grid-template-columns: 1fr; } }   /* three cards side by side only when there is room */
 .rln-try__step { display: flex; flex-direction: column; border: 1px dashed var(--pst-color-primary); border-radius: 14px; padding: 1.2rem; background: var(--pst-color-background); }
 .rln-try__step header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.6rem; }
 .rln-try__num { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 2rem; font-weight: 700; line-height: 1; color: var(--rb-accent); }
