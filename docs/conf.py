@@ -56,6 +56,7 @@ PUBLISHED_PAGES = {
     "about",
     "robots/index",
     "join",
+    "try",  # a "coming soon" teaser on purpose, linked from the top bar
 }
 
 import re as _re

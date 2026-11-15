@@ -1,17 +1,19 @@
 {# Top bar links. Kept short on purpose: the article sections (Motors, ROS 2, ...)
-   live in the left sidebar. To add a link, add a (title, page) pair below. #}
+   live in the left sidebar. To add a link, add a (title, page, badge) entry below;
+   badge is a small label next to the link ("" for none). #}
 {%- set top_links = [
-  ("Home", root_doc),
-  ("Robots", "robots/index"),
-  ("About & Contact", "about"),
+  ("Home", root_doc, ""),
+  ("Robots", "robots/index", ""),
+  ("Try it", "try", "Soon"),
+  ("About & Contact", "about", ""),
 ] %}
 <nav>
   <ul class="bd-navbar-elements navbar-nav">
-    {%- for title, page in top_links %}
+    {%- for title, page, badge in top_links %}
     {%- set section = page.rsplit("/", 1)[0] if "/" in page else page %}
     {%- set is_current = pagename == page or (page != root_doc and "/" in page and pagename.startswith(section ~ "/")) %}
     <li class="nav-item pst-header-nav-item{% if is_current %} current active{% endif %}">
-      <a class="nav-link nav-internal" href="{{ pathto(page) }}">{{ title }}</a>
+      <a class="nav-link nav-internal" href="{{ pathto(page) }}">{{ title }}{% if badge %}<span class="rln-nav-badge">{{ badge }}</span>{% endif %}</a>
     </li>
     {%- endfor %}
   </ul>
