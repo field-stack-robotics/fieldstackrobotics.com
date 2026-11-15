@@ -3,6 +3,7 @@
 (function () {
   "use strict";
   var KEY = "rln-closed-sections";
+  var PHONE = window.matchMedia("(max-width: 959.98px)").matches;   // same width where the theme turns the sidebar into a menu
 
   function load() {
     try { return JSON.parse(sessionStorage.getItem(KEY)) || []; } catch (e) { return []; }
@@ -20,7 +21,12 @@
       var id = link.pathname;
       // The section of the page you are reading always stays open.
       if (closed.indexOf(id) !== -1 && !item.classList.contains("current")) details.open = false;
+      // On phones the menu would be very long with every section open: start with only
+      // the section you are reading open. (Not saved, so desktop stays as it was.)
+      var auto = false;
+      if (PHONE && details.open && !item.classList.contains("current")) { auto = true; details.open = false; }
       details.addEventListener("toggle", function () {
+        if (auto) { auto = false; return; }   // that was the phone auto-close above, not the reader
         var now = load().filter(function (x) { return x !== id; });
         if (!details.open) now.push(id);
         save(now);

@@ -158,7 +158,8 @@ html_theme_options = {
         "alt_text": "Field Stack Robotics - Home",
     },
     # Thin bar above the top bar on every page. Delete this line to hide it.
-    "announcement": 'Model 1, the Field Stack indoor robot kit, is in the works. <a href="/robots/index.html">See all four robots →</a>',
+    "announcement": '<span class="rln-ann-long">Model 1, the Field Stack indoor robot kit, is in the works. <a href="/robots/index.html">See all four robots →</a></span>'
+                    '<span class="rln-ann-short"><a href="/robots/index.html">Model 1 is in the works →</a></span>',  # short version on phones
     "navbar_align": "left",
     "navbar_center": ["navbar-nav-home"],  # Home, Robots, Start here, About & Contact (_templates/navbar-nav-home.html)
     "navbar_end": ["navbar-github", "navbar-discord", "theme-switcher"],  # light/dark button last (_templates/theme-switcher.html)
