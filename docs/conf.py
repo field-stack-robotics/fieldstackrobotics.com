@@ -2,8 +2,8 @@
 # Docs: https://www.sphinx-doc.org/en/master/usage/configuration.html
 
 project = "Field Stack Robotics"
-author = "Oguzhan Gurbuz"
-copyright = "2026, Oguzhan Gurbuz"
+author = "Field Stack Robotics"
+copyright = "2026, Field Stack Robotics"
 
 extensions = [
     "myst_parser",  # write pages in Markdown (.md)
