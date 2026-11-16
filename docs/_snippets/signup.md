@@ -1,8 +1,13 @@
-<!-- Email signup box. The form comes from Kit (field-stack-robotics.kit.com, "Newsletter" form).
-     To change the form itself, edit it in Kit; the teal colors are in _static/custom.css (.signup .formkit-*).
-     Keep the outer <div class="signup" id="signup">: the sidebar card links to #signup. -->
+<!-- Email signup box. The form posts straight to Kit (form 10164332 on field-stack-robotics.kit.com),
+     which sends the confirmation email (double opt-in). Styles: .signup in _static/custom.css;
+     _static/signup.js shows the thank-you message in place. Keep id="signup": the sidebar card links to #signup. -->
 <div class="signup" id="signup">
-  <p class="signup__title"><strong>Follow the build.</strong> Dev logs and early kit access, every 2 weeks.</p>
-  <script async data-uid="1aef0bcb2c" src="https://field-stack-robotics.kit.com/1aef0bcb2c/index.js"></script>
-  <p>Unsubscribe anytime.</p>
+  <p class="signup__title">Follow the build</p>
+  <p class="signup__lead">One short email every two weeks: what I built, what broke.</p>
+  <form class="signup__form" action="https://app.kit.com/forms/10164332/subscriptions" method="post">
+    <input type="email" name="email_address" placeholder="you@example.com" aria-label="Email address" autocomplete="email" required>
+    <button type="submit">Subscribe</button>
+  </form>
+  <p class="signup__done" hidden data-success="Almost there. Check your inbox to confirm." data-error="That email doesn't look right. Try again?"></p>
+  <p class="signup__note">Unsubscribe anytime · <a href="https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_medium=referral&amp;utm_source=dynamic" target="_blank" rel="nofollow noopener">Built with Kit</a></p>
 </div>

@@ -37,19 +37,6 @@ html[data-theme="dark"] {
 .admonition.note > .admonition-title { background-color: var(--rln-sidebar-current) !important; }
 .admonition.note > .admonition-title::after, .admonition.note > .admonition-title::before { color: var(--pst-color-primary); }
 
-/* Email signup box */
-.signup { border: 1px solid var(--pst-color-border); border-radius: 6px; background: var(--rln-sidebar-bg); padding: 16px 18px; margin: 28px 0 8px; }
-.signup strong { display: block; font-size: 1.05rem; margin-bottom: 8px; }
-.signup form { display: flex; flex-wrap: wrap; gap: 8px; }
-.signup input[type="email"] { flex: 1 1 220px; padding: 6px 10px; border: 1px solid var(--pst-color-border); border-radius: 4px; background: var(--pst-color-background); color: var(--pst-color-text-base); }
-.signup button { background: var(--pst-color-primary); color: var(--pst-color-background); border: 0; border-radius: 4px; padding: 6px 16px; font-weight: 600; cursor: pointer; }
-.signup p { margin: 8px 0 0; font-size: 0.9rem; color: var(--pst-color-text-muted); }
-/* Kit form inside the box: no own background/padding, teal button (Kit sets inline styles, hence !important) */
-.signup .formkit-form { background: transparent !important; max-width: none !important; border: 0 !important; }
-.signup .formkit-form [data-style="clean"] { padding: 0 !important; }
-.signup .formkit-input { border-color: var(--pst-color-border) !important; background: var(--pst-color-background) !important; color: var(--pst-color-text-base) !important; border-radius: 4px !important; }
-.signup .formkit-submit { background-color: var(--pst-color-primary) !important; color: var(--pst-color-background) !important; border-radius: 4px !important; font-weight: 600 !important; }
-.signup .formkit-powered-by-convertkit-container { margin: 8px 0 0 !important; }
 
 /* Home page cards, like Jupyter's "More information" grid */
 .sd-card { background: var(--rln-sidebar-bg); border-color: var(--pst-color-border); transition: border-color 0.15s, box-shadow 0.15s; }
@@ -347,7 +334,7 @@ html[data-theme="dark"] .rb-veil::after { background: rgba(15, 26, 27, 0.78); co
 .rb-footnote { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem; font-size: 0.85rem; color: var(--pst-color-text-muted); margin: 0.4rem 0 2rem; }
 .rb-footnote span { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
 
-/* Waitlist checkboxes (the box itself reuses .signup) */
+/* Waitlist checkboxes */
 .rb-waitlist__models { display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; border: 0; padding: 0; margin: 0 0 0.7rem; flex-basis: 100%; }
 .rb-waitlist__models legend { font-size: 0.85rem; color: var(--pst-color-text-muted); margin-bottom: 0.3rem; float: none; width: auto; padding: 0; }
 .rb-waitlist__models label { font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.35rem; cursor: pointer; }
@@ -412,15 +399,6 @@ html[data-theme="dark"] .rln-soon__badge { background: var(--pst-color-primary);
 /* Left sidebar: posts that aren't published yet are listed as plain text (see _sidebar_and_footer() in conf.py) */
 .bd-sidebar-primary nav.bd-links li > span.rln-nolink { display: block; padding: 0.28rem 0.6rem; color: var(--pst-color-text-muted); opacity: 0.75; cursor: default; }
 
-/* Email box: title line, and the email field + Subscribe button on one row (stacked on phones) */
-.signup .signup__title { margin: 0 0 10px; font-size: 1.02rem; color: var(--pst-color-text-muted); }
-.signup .signup__title strong { display: inline; margin: 0; color: var(--pst-color-text-base); }
-@media (min-width: 640px) {
-  .signup .formkit-form .formkit-fields { display: flex !important; flex-wrap: nowrap !important; gap: 8px; align-items: stretch; }
-  .signup .formkit-form .formkit-fields .formkit-field { flex: 1 1 auto !important; margin: 0 !important; }
-  .signup .formkit-form .formkit-fields .formkit-submit { flex: 0 0 auto !important; width: auto !important; margin: 0 !important; padding-left: 1.6rem !important; padding-right: 1.6rem !important; }
-}
-html[data-theme="dark"] .signup .formkit-powered-by-convertkit { filter: invert(1) opacity(0.7); }   /* "Built with Kit" was dark on dark */
 .rb-card span.rb-card__cta--soon { align-self: flex-start; font-weight: 600; font-size: 0.9rem; padding: 0.45rem 0.9rem; border-radius: 8px;
   border: 1px dashed var(--pst-color-primary); color: var(--pst-color-primary); cursor: default; }   /* Model 1 page not published yet */
 
@@ -463,21 +441,24 @@ html[data-theme="dark"] .signup .formkit-powered-by-convertkit { filter: invert(
   .rln-try__phone p { margin: 0; font-size: 0.95rem; }
 }
 
-/* Email box, compact: a slimmer box, a shorter field and button, the form no wider than 34rem,
-   and a small faint "Built with Kit" badge (Kit's free plan keeps the badge on the form). */
-.signup { padding: 12px 16px; }
-.signup .signup__title { font-size: 0.95rem; margin-bottom: 8px; }
-.signup .formkit-form { max-width: 34rem !important; }
-.signup .formkit-form .formkit-input { padding: 0.45rem 0.7rem !important; font-size: 0.9rem !important; line-height: 1.4 !important; }
-.signup .formkit-form .formkit-submit { font-size: 0.9rem !important; }
-.signup .formkit-form .formkit-submit > span { padding: 0.45rem 0 !important; }
-.signup .formkit-form .formkit-fields { margin: 0 !important; }
-.signup .formkit-powered-by-convertkit-container { justify-content: flex-start !important; margin: 6px 0 0 !important; }
-.signup .formkit-form .formkit-powered-by-convertkit { opacity: 0.4 !important; transform: scale(0.65); transform-origin: left center; margin: 0 !important; }
-.signup .formkit-form .formkit-powered-by-convertkit:hover { opacity: 0.8 !important; }
-html[data-theme="dark"] .signup .formkit-form .formkit-powered-by-convertkit { filter: invert(1); opacity: 0.35 !important; }
-@media (max-width: 639.98px) {   /* phones: field and button stacked, both full width */
-  .signup .formkit-form .formkit-fields { display: flex !important; flex-direction: column !important; gap: 8px; }
-  .signup .formkit-form .formkit-fields .formkit-field, .signup .formkit-form .formkit-fields .formkit-submit { margin: 0 !important; width: 100% !important; flex: 0 0 auto !important; }
-}
-.signup > p:last-child { margin-top: 2px; font-size: 0.8rem; }
+/* Email box (_snippets/signup.md): soft rounded box, centered title, email field and button in one pill.
+   The form posts straight to Kit; _static/signup.js shows the "check your inbox" message without leaving the page. */
+.signup { background: var(--rln-sidebar-bg); border-radius: 14px; padding: 1.4rem 1.5rem 1.1rem; margin: 2rem 0 0.5rem; text-align: center; }
+.signup .signup__title { margin: 0; font-size: 1.05rem; font-weight: 600; color: var(--pst-color-text-base); }
+.signup .signup__lead { margin: 0.25rem 0 0.9rem; font-size: 0.92rem; color: var(--pst-color-text-muted); }
+.signup__form { display: flex; max-width: 26rem; margin: 0 auto; padding: 4px; background: var(--pst-color-background);
+  border: 1px solid var(--pst-color-border); border-radius: 999px; transition: border-color .15s, box-shadow .15s; }
+.signup__form:focus-within { border-color: var(--pst-color-primary); box-shadow: 0 0 0 3px color-mix(in srgb, var(--pst-color-primary) 18%, transparent); }
+.signup__form input { flex: 1 1 auto; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--pst-color-text-base);
+  font: inherit; font-size: 0.92rem; padding: 0.45rem 0.9rem; }
+.signup__form input::placeholder { color: var(--pst-color-text-muted); opacity: 0.8; }
+.signup__form button { flex: 0 0 auto; border: 0; border-radius: 999px; background: var(--pst-color-primary); color: var(--pst-color-background);
+  font: inherit; font-size: 0.92rem; font-weight: 600; padding: 0.45rem 1.15rem; cursor: pointer; transition: filter .15s; }
+.signup__form button:hover { filter: brightness(1.08); }
+.signup__form button[disabled] { opacity: 0.6; cursor: default; }
+.signup .signup__note { margin: 0.6rem 0 0; font-size: 0.75rem; color: var(--pst-color-text-muted); opacity: 0.8; }
+.signup .signup__note a { color: inherit; text-decoration: none; }
+.signup .signup__note a:hover { text-decoration: underline; }
+.signup .signup__done { margin: 0.2rem 0 0.4rem; font-size: 0.95rem; color: var(--pst-color-text-base); }
+.signup .signup__done[hidden], .signup .signup__form[hidden] { display: none; }
+

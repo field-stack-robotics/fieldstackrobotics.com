@@ -23,7 +23,7 @@ html_theme = "pydata_sphinx_theme"
 html_title = "Field Stack Robotics"
 html_static_path = ["_static"]
 templates_path = ["_templates"]
-html_js_files = ["imu-widget.js", "sidebar-state.js", "theme-toggle.js", "heading-chart.js", "giscus-theme.js"]  # home page IMU animation, left sidebar open/closed sections, light/dark button, heading error chart, comments light/dark
+html_js_files = ["imu-widget.js", "sidebar-state.js", "theme-toggle.js", "heading-chart.js", "giscus-theme.js", "signup.js"]  # home page IMU animation, left sidebar open/closed sections, light/dark button, heading error chart, comments light/dark, email box
 html_css_files = [
     "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
     "custom.css",  # turquoise colors live here
@@ -162,8 +162,8 @@ html_theme_options = {
         "alt_text": "Field Stack Robotics - Home",
     },
     # Thin bar above the top bar on every page. Delete this line to hide it.
-    "announcement": '<span class="rln-ann-long">Model 1, the Field Stack indoor robot kit, is in the works. <a href="/robots/index.html">See all four robots →</a></span>'
-                    '<span class="rln-ann-short"><a href="/robots/index.html">Model 1 is in the works →</a></span>',  # short version on phones
+    "announcement": '<span class="rln-ann-long">Building our first robot kit, in the open. <a href="/robots/index.html">Meet the robots →</a></span>'
+                    '<span class="rln-ann-short"><a href="/robots/index.html">Building our first robot kit →</a></span>',  # short version on phones
     "navbar_align": "left",
     "navbar_center": ["navbar-nav-home"],  # Home, Robots, Start here, About & Contact (_templates/navbar-nav-home.html)
     "navbar_end": ["navbar-github", "navbar-discord", "theme-switcher"],  # light/dark button last (_templates/theme-switcher.html)
