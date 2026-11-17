@@ -9,7 +9,7 @@ loop to autonomy in the field. Join the email list to follow along.
 
 - **Dev logs** every 2 weeks: what was built, measured and broken
 - **New posts and tutorials** as soon as they're out
-- **Early access to the Model 1 kit**, before anyone else
+- **Early access to the Caretta kit**, before anyone else
 
 ```{include} _snippets/signup.md
 ```

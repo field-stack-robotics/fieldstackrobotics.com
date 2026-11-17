@@ -1,13 +1,14 @@
-# Model 1: Indoor Robot
+# Caretta: Indoor Robot
 
 <div class="rb-badge rb-badge--now rb-badge--inline"><span class="rb-pulse"></span>Building now</div>
 
-The first Field Stack robot, and the one every post on this site is written on.
+Caretta is the first Field Stack robot, named after the loggerhead sea turtles
+that nest on the beaches of Antalya, where it is built. It's the one every post on this site is written on.
 A solder-free kit: you bolt it together, flash it, and follow the blog series
 step by step on exactly the same hardware.
 
 <!-- Replace with a real photo when the prototype is ready:
-![Model 1 prototype](../_static/model-1.jpg) -->
+![Caretta prototype](../_static/caretta.jpg) -->
 
 ## What's in the kit
 
@@ -32,7 +33,7 @@ wiring and firmware.
 
 ## Built in public
 
-Model 1 is being designed and tested right now. Every step lands on this site:
+Caretta is being designed and tested right now. Every step lands on this site:
 
 - [Reading encoders](../motors/encoder-basics.md)
 - [PID speed control](../motors/pid-speed-control.md)

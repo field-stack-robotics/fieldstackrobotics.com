@@ -400,7 +400,7 @@ html[data-theme="dark"] .rln-soon__badge { background: var(--pst-color-primary);
 .bd-sidebar-primary nav.bd-links li > span.rln-nolink { display: block; padding: 0.28rem 0.6rem; color: var(--pst-color-text-muted); opacity: 0.75; cursor: default; }
 
 .rb-card span.rb-card__cta--soon { align-self: flex-start; font-weight: 600; font-size: 0.9rem; padding: 0.45rem 0.9rem; border-radius: 8px;
-  border: 1px dashed var(--pst-color-primary); color: var(--pst-color-primary); cursor: default; }   /* Model 1 page not published yet */
+  border: 1px dashed var(--pst-color-primary); color: var(--pst-color-primary); cursor: default; }   /* Caretta page not published yet */
 
 /* ---------- Phones ---------- */
 .rln-ann-short { display: none; }

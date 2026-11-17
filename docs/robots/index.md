@@ -15,7 +15,7 @@
 <article class="rb-card rb-card--now">
   <header class="rb-card__top"><span class="rb-card__num">01</span><span class="rb-badge rb-badge--now"><span class="rb-pulse"></span>Building now</span></header>
   <div class="rb-art">
-    <svg viewBox="0 0 240 150" role="img" aria-label="Model 1, a two-deck indoor robot with a LiDAR on top">
+    <svg viewBox="0 0 240 150" role="img" aria-label="Caretta, a two-deck indoor robot with a LiDAR on top">
       <path class="rb-scan" d="M78 44 Q120 14 162 44"/><path class="rb-scan" d="M92 50 Q120 30 148 50"/>
       <line class="rb-floor" x1="30" y1="128" x2="210" y2="128"/>
       <rect class="rb-dark" x="102" y="52" width="36" height="12" rx="3"/>
@@ -29,8 +29,8 @@
       <rect class="rb-panel" x="162" y="108" width="10" height="12"/><circle class="rb-dark" cx="167" cy="123" r="6"/>
     </svg>
   </div>
-  <p class="rb-card__model">Model 1</p>
-  <h3 class="rb-card__name">Indoor Robot</h3>
+  <p class="rb-card__model">Model 1 · Indoor robot</p>
+  <h3 class="rb-card__name">Caretta</h3>
   <p class="rb-card__lead">A solder-free first kit that matches the blog series one to one.</p>
   <ul class="rb-specs">
     <li>Differential drive, 2 wheels and a caster</li>
@@ -136,12 +136,12 @@ ground robot and drone working together.<span>Open software · Open hardware · 
 ## One stack, four robots
 
 Nothing is thrown away between models. The motor control, odometry, EKF and
-navigation you build on Model 1 come with you to the rover, the tracked robot
+navigation you build on Caretta come with you to the rover, the tracked robot
 and the boat. Each new model only adds the part that is actually new: GPS and
 weatherproofing, then tracks and rough ground, then water.
 
 That is also why the blog and the robots follow the same order. Every post on
-this site runs on Model 1 first.
+this site runs on Caretta first.
 
 (waitlist)=
 ## Get notified
@@ -152,5 +152,5 @@ this site runs on Model 1 first.
 ```{toctree}
 :hidden:
 
-model-1
+caretta
 ```

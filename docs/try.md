@@ -15,13 +15,13 @@ orphan: true
   <article class="rln-try__step">
     <header><span class="rln-try__num">01</span><span class="rb-badge">Coming soon</span></header>
     <h3>Try in simulation</h3>
-    <p>Drive Model 1 in your browser. No install.</p>
+    <p>Drive Caretta in Gazebo. One Docker command, any OS.</p>
     <p class="rln-try__needs"><span class="rb-badge rb-badge--outline"><i class="fa-solid fa-desktop" aria-hidden="true"></i> Desktop</span></p>
   </article>
   <article class="rln-try__step">
     <header><span class="rln-try__num">02</span><span class="rb-badge">Coming soon</span></header>
     <h3>Drive the real robot</h3>
-    <p>Drive a real Model 1 remotely. Keep your rosbag, map and video.</p>
+    <p>Drive a real Caretta remotely. Keep your rosbag, map and video.</p>
     <p class="rln-try__needs"><span class="rb-badge rb-badge--outline"><i class="fa-solid fa-desktop" aria-hidden="true"></i> Desktop</span></p>
   </article>
   <article class="rln-try__step">

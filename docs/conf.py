@@ -94,7 +94,7 @@ def _coming_soon(app, docname, source):
             title,
             first_par,
             '<div class="rln-soon"><span class="rln-soon__badge">Coming soon</span>'
-            f"<p>{'Posts in this section are' if docname.endswith('/index') else 'This post is'} being written. Model 1 is being built right now, "
+            f"<p>{'Posts in this section are' if docname.endswith('/index') else 'This post is'} being written. Caretta, our first robot, is being built right now, "
             "and every step will be published here.</p></div>",
             "```{include} /_snippets/signup.md\n```",
             *toctrees,
@@ -162,8 +162,8 @@ html_theme_options = {
         "alt_text": "Field Stack Robotics - Home",
     },
     # Thin bar above the top bar on every page. Delete this line to hide it.
-    "announcement": '<span class="rln-ann-long">Building our first robot kit, in the open. <a href="/robots/index.html">Meet the robots →</a></span>'
-                    '<span class="rln-ann-short"><a href="/robots/index.html">Building our first robot kit →</a></span>',  # short version on phones
+    "announcement": '<span class="rln-ann-long">Building Caretta, our first robot kit, in the open. <a href="/robots/index.html">Meet the robots →</a></span>'
+                    '<span class="rln-ann-short"><a href="/robots/index.html">Building Caretta, our first kit →</a></span>',  # short version on phones
     "navbar_align": "left",
     "navbar_center": ["navbar-nav-home"],  # Home, Robots, Start here, About & Contact (_templates/navbar-nav-home.html)
     "navbar_end": ["navbar-github", "navbar-discord", "theme-switcher"],  # light/dark button last (_templates/theme-switcher.html)
