@@ -133,6 +133,13 @@
 <p class="rb-footnote">Aerial robots are not on the product list. They show up as content instead:
 ground robot and drone working together.<span>Open software · Open hardware · ROS 2</span></p>
 
+<!-- 3D model of Caretta, built from the robot's URDF (tools/make_caretta_glb.py).
+     The viewer is _static/caretta-viewer/caretta-viewer.js; it only loads on this page. -->
+<div class="rln-viewer" data-caretta-viewer>
+  <noscript><p>The 3D view of Caretta needs JavaScript.</p></noscript>
+</div>
+<script type="module" src="../_static/caretta-viewer/caretta-viewer.js"></script>
+
 ## One stack, four robots
 
 Nothing is thrown away between models. The motor control, odometry, EKF and
