@@ -1,14 +1,12 @@
 # Robots
 
-<!-- Product roadmap page. The cards below are plain HTML so they can carry the
-     illustrations and the blur. To reveal a model, remove "rb-veil--2/3" from its
-     art wrapper and "rb-specs--locked" from its spec list. -->
+<!-- Robots page: Caretta only for now. The card is plain HTML so it can carry the
+     illustration; the 3D viewer under it is _static/caretta-viewer/. -->
 
 <div class="rb-hero">
   <p class="rb-hero__eyebrow">Field Stack Robotics</p>
-  <p class="rb-hero__lead">Four robots, one stack. Each model adds exactly one new
-  challenge on top of the software and electronics of the one before it.
-  All open source, all ROS 2.</p>
+  <p class="rb-hero__lead">Caretta is our first robot: a small indoor kit that every
+  post on this site is built and tested on. Open source, ROS 2.</p>
 </div>
 
 <div class="rb-grid rb-grid--focus">
@@ -53,15 +51,11 @@
 </div>
 <script type="module" src="../_static/caretta-viewer/caretta-viewer.js"></script>
 
-## One stack, four robots
+## Built on Caretta
 
-Nothing is thrown away between models. The motor control, odometry, EKF and
-navigation you build on Caretta come with you to the rover, the tracked robot
-and the boat. Each new model only adds the part that is actually new: GPS and
-weatherproofing, then tracks and rough ground, then water.
-
-That is also why the blog and the robots follow the same order. Every post on
-this site runs on Caretta first.
+Every post on this site runs on Caretta first: motor control, odometry, EKF and
+navigation, all on the same hardware. When the kit is ready, you can follow the
+posts step by step on exactly the same robot.
 
 (waitlist)=
 ## Get notified

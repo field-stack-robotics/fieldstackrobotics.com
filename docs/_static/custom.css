@@ -353,6 +353,7 @@ a.rb-strip:hover { border-color: var(--pst-color-primary); box-shadow: 0 4px 16p
 .rb-strip__item--now { box-shadow: inset 0 0 0 1.5px var(--pst-color-primary); }
 .rb-strip__item--hidden i { font-style: normal; filter: blur(4px); user-select: none; }
 @media (max-width: 640px) { a.rb-strip { grid-template-columns: repeat(2, 1fr); } }
+a.rb-strip.rb-strip--one { grid-template-columns: 1fr; }   /* home page: Caretta only for now */
 
 /* Announcement bar above the top bar */
 .bd-header-announcement { background: var(--rb-dark) !important; color: #fff; font-size: 0.88rem; }
