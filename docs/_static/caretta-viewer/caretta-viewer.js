@@ -9,31 +9,17 @@ import { toCreasedNormals } from "./BufferGeometryUtils.js";
 
 const MODEL_URL = new URL("caretta.glb", import.meta.url).href;
 const TARGET = new THREE.Vector3(-0.041, 0.07, 0);   // middle of the robot (glTF: y up)
-const DISTANCE = 0.5;                                // camera distance in metres
+const DISTANCE = 0.56;                               // camera distance in metres
 const EXPLODE_GAP = 0.04;                            // how far each plate moves up
 const TWEEN_MS = 700;
 
 // Camera directions in robot terms: azimuth from the front (x) toward the left (y), elevation up.
 const VIEWS = {
-  perspective: { label: "Perspective", az: 35, el: 24 },
-  top: { label: "Top", az: 0, el: 89.5 },
-  side: { label: "Side", az: 90, el: 4 },
-  bottom: { label: "Bottom", az: 0, el: -89.5 },
+  reset: { label: "Reset view", az: 35, el: 24 },
 };
 const TOGGLES = [
   { key: "explode", label: "Explode", on: false },
-  { key: "plate_top", label: "Top plate", on: true },
-  { key: "plate_middle", label: "Middle plate", on: true },
-  { key: "electronics", label: "Sensors", on: true },
   { key: "spin", label: "Auto-rotate", on: true },
-];
-const LEGEND = [
-  ["#161a1b", "Plates, black (5 / 6 / 6 mm)"],
-  ["#0e9e94", "Inlaid turquoise stripes and logo"],
-  ["#f2a93b", "Logo light, amber"],
-  ["#c9a33a", "M3 brass standoffs"],
-  ["#f2c230", "Motors and wheels"],
-  ["#d0312d", "Emergency stop"],
 ];
 
 function viewDirection(az, el) {
@@ -72,23 +58,12 @@ function build(root) {
   views.setAttribute("aria-label", "Camera views");
   bar.append(toggles, views);
 
-  const legend = document.createElement("ul");
-  legend.className = "rln-viewer__legend";
-  LEGEND.forEach(([color, text]) => {
-    const li = document.createElement("li");
-    const sw = document.createElement("span");
-    sw.className = "rln-viewer__swatch";
-    sw.style.background = color;
-    li.append(sw, text);
-    legend.appendChild(li);
-  });
-
   const caption = document.createElement("p");
   caption.className = "rln-viewer__caption";
-  caption.textContent = "Caretta Rev G, the same model the simulator uses. Drag to rotate, "
+  caption.textContent = "Caretta, the same model the simulator uses. Drag to rotate, "
     + "click and scroll (or pinch) to zoom, right-drag to pan.";
 
-  root.append(stage, bar, legend, caption);
+  root.append(stage, bar, caption);
   return { stage, status, toggles, views };
 }
 
@@ -108,7 +83,7 @@ function start(root) {
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(32, 1, 0.01, 20);
-  camera.position.copy(TARGET).addScaledVector(viewDirection(VIEWS.perspective.az, VIEWS.perspective.el), DISTANCE);
+  camera.position.copy(TARGET).addScaledVector(viewDirection(VIEWS.reset.az, VIEWS.reset.el), DISTANCE);
 
   scene.add(new THREE.HemisphereLight(0xffffff, 0x8a9696, 1.7));
   const key = new THREE.DirectionalLight(0xffffff, 1.6);

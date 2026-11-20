@@ -475,7 +475,9 @@ html[data-theme="dark"] .rln-soon__badge { background: var(--pst-color-primary);
 .rln-viewer__btn:hover { border-color: var(--pst-color-primary); }
 .rln-viewer__btn[aria-pressed="true"] { background: var(--pst-color-primary); border-color: var(--pst-color-primary); color: var(--pst-color-background); }   /* same contrast as .rln-card__button */
 .rln-viewer__btn:focus-visible { outline: 2px solid var(--pst-color-primary); outline-offset: 2px; }
-.rln-viewer__legend { display: flex; flex-wrap: wrap; gap: 4px 18px; margin: 12px 0 0; padding: 0; list-style: none; font-size: 0.8rem; color: var(--pst-color-text-muted); }
-.rln-viewer__legend li { display: inline-flex; align-items: center; gap: 6px; margin: 0; }
-.rln-viewer__swatch { width: 11px; height: 11px; border-radius: 3px; border: 1px solid var(--pst-color-border); }
-.rln-viewer__caption { margin: 8px 0 0; font-size: 0.8rem; color: var(--pst-color-text-muted); }
+/* Robots page: Caretta card on the left, 3D viewer filling the rest of the row */
+.rb-grid--focus { grid-template-columns: minmax(15rem, 1fr) 3fr; }
+@media (max-width: 900px) { .rb-grid--focus { grid-template-columns: 1fr; } }
+.rb-viewer { display: flex; flex-direction: column; margin: 0; border-radius: 14px; background: var(--rln-sidebar-bg); padding: 12px; }   /* turquoise frame, white stage (as .rln-viewer) */
+.rb-viewer .rln-viewer__stage { flex: 1 1 auto; height: auto; min-height: clamp(300px, 45vw, 440px); }
+.rln-viewer__caption { margin: 10px 0 0; font-size: 0.8rem; color: var(--pst-color-text-muted); }
