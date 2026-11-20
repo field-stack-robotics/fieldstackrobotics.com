@@ -12,8 +12,7 @@
 </div>
 
 <div class="rb-grid rb-grid--focus">
-<article class="rb-card rb-card--now">
-  <header class="rb-card__top"><span class="rb-card__num">01</span><span class="rb-badge rb-badge--now"><span class="rb-pulse"></span>Building now</span></header>
+<article class="rb-card rb-card--now rb-card--wide">
   <div class="rb-art">
     <svg viewBox="0 0 240 150" role="img" aria-label="Caretta, a two-deck indoor robot with a LiDAR on top">
       <path class="rb-scan" d="M78 44 Q120 14 162 44"/><path class="rb-scan" d="M92 50 Q120 30 148 50"/>
@@ -29,17 +28,22 @@
       <rect class="rb-panel" x="162" y="108" width="10" height="12"/><circle class="rb-dark" cx="167" cy="123" r="6"/>
     </svg>
   </div>
-  <p class="rb-card__model">Model 1 · Indoor robot</p>
-  <h3 class="rb-card__name">Caretta</h3>
-  <p class="rb-card__lead">A solder-free first kit that matches the blog series one to one.</p>
-  <ul class="rb-specs">
-    <li>Differential drive, 2 wheels and a caster</li>
-    <li>Field Stack main board with IMU</li>
-    <li>2D LiDAR, Raspberry Pi 5 (optional)</li>
-    <li>Add-on: warehouse and fleet pack</li>
-  </ul>
-  <p class="rb-card__for">For students, researchers and teaching labs</p>
-  <span class="rb-card__cta rb-card__cta--soon">Details coming soon</span>
+  <div class="rb-card__main">
+    <header class="rb-card__top"><span class="rb-badge rb-badge--now"><span class="rb-pulse"></span>Building now</span></header>
+    <p class="rb-card__model">Indoor robot</p>
+    <h3 class="rb-card__name">Caretta</h3>
+    <p class="rb-card__lead">A solder-free first kit that matches the blog series one to one.</p>
+    <p class="rb-card__for">For students, researchers and teaching labs</p>
+  </div>
+  <div class="rb-card__side">
+    <ul class="rb-specs">
+      <li>Differential drive, 2 wheels and a caster</li>
+      <li>Field Stack main board with IMU</li>
+      <li>2D LiDAR, Raspberry Pi 5 (optional)</li>
+      <li>Add-on: warehouse and fleet pack</li>
+    </ul>
+    <span class="rb-card__cta rb-card__cta--soon">Details coming soon</span>
+  </div>
 </article>
 <!-- 3D model of Caretta, built from the robot's URDF (tools/make_caretta_glb.py).
      The viewer is _static/caretta-viewer/caretta-viewer.js; it only loads on this page. -->
