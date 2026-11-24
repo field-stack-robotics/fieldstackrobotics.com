@@ -175,7 +175,7 @@ ros2 run teleop_twist_keyboard teleop_twist_keyboard \
 `i` drives forward, `j` and `l` turn, `k` stops. Keep this terminal selected while you drive.
 
 ```{raw} html
-<p align="center" class="fsr-img"><video src="_static/try/hero.mp4" aria-label="Caretta driving in Gazebo and RViz" width="760" autoplay loop muted playsinline></video></p>
+<p align="center" class="fsr-img"><video src="_static/try/drive.mp4" aria-label="Driving Caretta in Gazebo with the keyboard" width="760" autoplay loop muted playsinline></video></p>
 ```
 
 ## 4. SLAM
