@@ -386,8 +386,14 @@ html { scrollbar-gutter: stable; }   /* short and long pages keep the same width
   .bd-main .bd-content { justify-content: center; }   /* text and right panel sit together, centred */
   .bd-main .bd-content .bd-article-container { flex: 1 1 auto; max-width: var(--rln-text-col); }
   .bd-sidebar-secondary { --rln-line-gap: 2rem; width: var(--rln-right-col); margin-left: 0; margin-right: 0; }
-  /* top bar links stay in line with the page title */
-  .bd-header .navbar-header-items__start { margin-right: calc(2rem + var(--rln-center-pad)) !important; }
+  /* top bar links: in line with the page title, at the same place on every page */
+  .bd-header .navbar-header-items__start { margin-right: calc(1.55rem + var(--rln-center-pad) / 2) !important; }
+  /* Pages with a right panel: the panel stays where it is, the text sits in the middle between the left sidebar and the panel's line */
+  :root:has(.bd-sidebar-secondary) .bd-main .bd-content .bd-article-container { margin-left: calc(var(--rln-center-pad) / -2 - 0.45rem); margin-right: calc(var(--rln-center-pad) / 2 + 0.45rem); }
+  /* Robots page (no right panel): in the middle of the space next to the left sidebar */
+  :root:has(.rb-grid) .bd-main .bd-content .bd-article-container { margin-left: -1rem; margin-right: 1rem; }
+  .bd-sidebar-secondary { scrollbar-width: none; }   /* no scrollbar in the middle of the page */
+  .bd-sidebar-secondary::-webkit-scrollbar { display: none; }
 }
 
 /* Coming soon note (built by _coming_soon() in conf.py for pages not in PUBLISHED_PAGES) */
@@ -519,9 +525,3 @@ html[data-theme="dark"] .fsr-help { background: #3a1d1b; color: #f5b7b0; }
 .bd-article-container:has(.fsr-page) .highlight-bash pre { padding-right: 5rem; white-space: pre-wrap; overflow-wrap: anywhere; }
 .fsr-copy { position: absolute; top: 0.4rem; right: 0.4rem; padding: 0.15rem 0.6rem; border: 1px solid var(--pst-color-border); border-radius: 6px; background: var(--pst-color-background); color: var(--pst-color-text-muted); font-size: 0.75rem; }
 .fsr-copy:hover { color: var(--pst-color-primary); border-color: var(--pst-color-primary); }
-@media (min-width: 1200px) {   /* text centred between the left sidebar and the right panel; top bar links stay in line with it */
-  :root:has(.fsr-page) .bd-main .bd-content .bd-article-container { margin-left: calc(var(--rln-center-pad) / -2 - 0.45rem); margin-right: calc(var(--rln-center-pad) / 2 + 0.45rem); }
-  :root:has(.fsr-page) .bd-header .navbar-header-items__start { margin-right: calc(1.55rem + var(--rln-center-pad) / 2) !important; }
-  :root:has(.fsr-page) .bd-sidebar-secondary { scrollbar-width: none; }   /* no scrollbar in the middle of the page */
-  :root:has(.fsr-page) .bd-sidebar-secondary::-webkit-scrollbar { display: none; }
-}

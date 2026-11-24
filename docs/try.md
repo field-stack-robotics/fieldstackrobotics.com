@@ -35,8 +35,6 @@ Caretta is our first robot: a small, open source indoor robot that runs ROS 2.
 
 ## 2. Install
 
-### 2.1 Install the tools
-
 First, install the tools we need:
 
 ```bash
@@ -49,7 +47,7 @@ sudo apt install python3-rosdep python3-colcon-common-extensions git \
 - `git`: downloads the repos
 - `teleop_twist_keyboard`: drives the robot with the keyboard
 
-### 2.2 Download the repos
+### 2.1 Download the repos
 
 Create a workspace folder and go into its `src` folder:
 
@@ -90,7 +88,7 @@ git clone -b humble https://github.com/field-stack-robotics/caretta_simulator.gi
 </div>
 ```
 
-### 2.3 Build the workspace
+### 2.2 Build the workspace
 
 Set up `rosdep`. You only need this once per computer, so skip it if it says "already exists":
 
