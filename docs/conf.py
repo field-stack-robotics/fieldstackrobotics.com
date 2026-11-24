@@ -162,15 +162,14 @@ html_theme_options = {
         "alt_text": "Field Stack Robotics - Home",
     },
     # Thin bar above the top bar on every page. Delete this line to hide it.
-    "announcement": '<span class="rln-ann-long">Building Caretta, our first robot kit, in the open. <a href="/robots/index.html">Meet the robots →</a></span>'
+    "announcement": '<span class="rln-ann-long">Building Caretta, our first robot kit, in the open. <a href="/robots/index.html">Meet Caretta →</a></span>'
                     '<span class="rln-ann-short"><a href="/robots/index.html">Building Caretta, our first kit →</a></span>',  # short version on phones
     "navbar_align": "left",
-    "navbar_center": ["navbar-nav-home"],  # Home, Robots, Start here, About & Contact (_templates/navbar-nav-home.html)
+    "navbar_center": ["navbar-nav-home"],  # Home, Robot, Try it, Contact (_templates/navbar-nav-home.html)
     "navbar_end": ["navbar-github", "navbar-discord", "theme-switcher"],  # light/dark button last (_templates/theme-switcher.html)
     "navbar_persistent": [],  # search lives at the top of the left sidebar
     # Right sidebar: card on top, then "On this page"
-    # The robots page has no right sidebar, so its four cards get the full width.
-    "secondary_sidebar_items": {"**": ["sidebar-card", "page-toc", "edit-this-page"], "robots/index": []},
+    "secondary_sidebar_items": ["sidebar-card", "page-toc", "edit-this-page"],
     "show_toc_level": 2,
     # Left sidebar: every section starts open, with its pages listed underneath (like docs.nav2.org)
     "show_nav_level": 2,

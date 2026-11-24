@@ -1,4 +1,4 @@
-# Robots
+# Caretta
 
 <!-- Robots page: Caretta only for now. The card is plain HTML so it can carry the
      illustration; the 3D viewer under it is _static/caretta-viewer/. -->

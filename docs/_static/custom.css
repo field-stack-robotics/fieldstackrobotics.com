@@ -245,7 +245,6 @@ html[data-theme="dark"]  { --rb-ink: #cfe9e6; --rb-body: #1d3433; --rb-panel: #4
   letter-spacing: 0.28em; text-transform: uppercase; color: var(--pst-color-primary); margin: 0 0 0.3rem; }
 .rb-hero__lead { font-size: 1.15rem; line-height: 1.55; color: var(--pst-color-text-muted); max-width: 46rem; margin: 0; }
 
-.bd-main .bd-content .bd-article-container:has(.rb-grid) { max-width: var(--rln-text-col, 82rem); }   /* robots page: use the full width */
 .bd-article-container:has(.rb-grid) section > p, .rb-waitlist { max-width: 50rem; }   /* keep text lines readable on the wide page */
 .rb-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.1rem; margin: 0 0 1rem; }
 @media (max-width: 1280px) { .rb-grid { grid-template-columns: repeat(2, 1fr); } }   /* 2 x 2, never 3 + 1 */
@@ -382,7 +381,6 @@ html { scrollbar-gutter: stable; }   /* short and long pages keep the same width
 @media (min-width: 1200px) {
   :root { --rln-text-col: 50rem; --rln-right-col: 18rem;
           --rln-center-pad: max(0px, (100vw - 16rem - var(--rln-text-col) - var(--rln-right-col)) / 2); }
-  :root:has(.rb-grid) { --rln-text-col: 68rem; --rln-right-col: 0rem; }   /* robots page: no right panel, the card grid takes its width too, so the page starts at the same place as the others */
   .bd-main .bd-content { justify-content: center; }   /* text and right panel sit together, centred */
   .bd-main .bd-content .bd-article-container { flex: 1 1 auto; max-width: var(--rln-text-col); }
   .bd-sidebar-secondary { --rln-line-gap: 2rem; width: var(--rln-right-col); margin-left: 0; margin-right: 0; }
@@ -390,8 +388,6 @@ html { scrollbar-gutter: stable; }   /* short and long pages keep the same width
   .bd-header .navbar-header-items__start { margin-right: calc(1.55rem + var(--rln-center-pad) / 2) !important; }
   /* Pages with a right panel: the panel stays where it is, the text sits in the middle between the left sidebar and the panel's line */
   :root:has(.bd-sidebar-secondary) .bd-main .bd-content .bd-article-container { margin-left: calc(var(--rln-center-pad) / -2 - 0.45rem); margin-right: calc(var(--rln-center-pad) / 2 + 0.45rem); }
-  /* Robots page (no right panel): in the middle of the space next to the left sidebar */
-  :root:has(.rb-grid) .bd-main .bd-content .bd-article-container { margin-left: -1rem; margin-right: 1rem; }
   .bd-sidebar-secondary { scrollbar-width: none; }   /* no scrollbar in the middle of the page */
   .bd-sidebar-secondary::-webkit-scrollbar { display: none; }
 }
@@ -484,21 +480,17 @@ html[data-theme="dark"] .rln-soon__badge { background: var(--pst-color-primary);
 .rln-viewer__btn:focus-visible { outline: 2px solid var(--pst-color-primary); outline-offset: 2px; }
 /* Robots page: one wide Caretta card (art | name | specs), the 3D viewer under it */
 .rb-grid--focus { grid-template-columns: 1fr; gap: 1.25rem; }
-.rb-card--wide { display: grid; grid-template-columns: minmax(12rem, 15rem) 1.1fr 1fr; align-items: center; gap: 0 2rem; padding: 1.4rem 1.6rem; }
+.rb-card--wide { display: grid; grid-template-columns: minmax(10rem, 15rem) 1fr; align-items: center; gap: 1.2rem 2rem; padding: 1.4rem 1.6rem; }   /* picture + text, specs below */
 .rb-card--wide, .rb-card--wide:hover { transform: none; box-shadow: none; border-color: var(--pst-color-border); }   /* calm: no lift, thin border */
 .rb-card--wide .rb-art { margin: 0; }
 .rb-card--wide .rb-card__top { justify-content: flex-start; gap: 0.8rem; margin-bottom: 0.6rem; }
 .rb-card--wide .rb-card__num { font-size: 1.6rem; }
 .rb-card--wide .rb-card__lead { margin-bottom: 0; }
 .rb-card--wide .rb-card__for { margin: 0.9rem 0 0; padding-top: 0.7rem; }
-.rb-card__side { align-self: stretch; display: flex; flex-direction: column; justify-content: center; padding-left: 2rem; border-left: 1px solid var(--pst-color-border); }
-.rb-card__side .rb-specs { margin: 0 0 1rem; }
+.rb-card__side { grid-column: 1 / -1; display: flex; flex-direction: column; padding: 1rem 0 0; border-top: 1px solid var(--pst-color-border); }
+.rb-card__side ul.rb-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2rem; margin: 0 0 0.8rem; }
 .rb-card__side .rb-card__cta { align-self: flex-start; }
-@media (max-width: 1000px) {
-  .rb-card--wide { grid-template-columns: minmax(10rem, 13rem) 1fr; gap: 1.2rem 1.6rem; }
-  .rb-card__side { grid-column: 1 / -1; padding: 1rem 0 0; border-left: 0; border-top: 1px solid var(--pst-color-border); }
-}
-@media (max-width: 640px) { .rb-card--wide { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { .rb-card--wide, .rb-card__side ul.rb-specs { grid-template-columns: 1fr; } }
 .rb-viewer { display: flex; flex-direction: column; margin: 0; border-radius: 14px; background: var(--rln-sidebar-bg); padding: 12px; }   /* turquoise frame, white stage (as .rln-viewer) */
 .rb-viewer .rln-viewer__stage { height: clamp(320px, 42vw, 520px); }
 .rln-viewer__caption { margin: 10px 0 0; font-size: 0.8rem; color: var(--pst-color-text-muted); }
