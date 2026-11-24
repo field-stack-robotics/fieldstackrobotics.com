@@ -56,7 +56,7 @@ PUBLISHED_PAGES = {
     "about",
     "robots/index",
     "join",
-    "try",  # a "coming soon" teaser on purpose, linked from the top bar
+    "try",
 }
 
 import re as _re
@@ -151,7 +151,7 @@ def setup(app):
 
 # Published pages that are still only a teaser: shown in full, but kept out of Google
 # (noindex + not in sitemap.xml) until there is something real on them.
-NOINDEX_PAGES = {"try"}  # remove "try" when the simulator is live
+NOINDEX_PAGES = set()
 sitemap_excludes = [f"{page}.html" for page in COMING_SOON_PAGES + sorted(NOINDEX_PAGES)] + ["search.html", "genindex.html"]
 
 html_theme_options = {

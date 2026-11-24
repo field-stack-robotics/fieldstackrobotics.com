@@ -496,3 +496,32 @@ html[data-theme="dark"] .rln-soon__badge { background: var(--pst-color-primary);
 .rb-viewer { display: flex; flex-direction: column; margin: 0; border-radius: 14px; background: var(--rln-sidebar-bg); padding: 12px; }   /* turquoise frame, white stage (as .rln-viewer) */
 .rb-viewer .rln-viewer__stage { height: clamp(320px, 42vw, 520px); }
 .rln-viewer__caption { margin: 10px 0 0; font-size: 0.8rem; color: var(--pst-color-text-muted); }
+
+/* ---------- Try page (try.md): step-by-step guide. The .fsr-page marker keeps these rules on that page ---------- */
+.fsr-page { display: none; }
+.fsr-bar { display: flex; gap: 0.4rem; margin-top: 1rem; padding: 0.5rem 0.9rem; border-radius: 10px 10px 0 0; background: #1b2f30; }   /* terminal window */
+.fsr-bar i { width: 0.65rem; height: 0.65rem; border-radius: 50%; background: #f0712c; }
+.fsr-bar i + i { background: #e5b93c; }
+.fsr-bar i + i + i { background: #2bb8ae; }
+.fsr-term { margin-bottom: 1.3rem; padding: 1rem 1.1rem; border-radius: 0 0 10px 10px; background: #0d1b1c; color: #dfeceb; font: 0.85rem/1.6 ui-monospace, SFMono-Regular, Menlo, monospace; overflow-x: auto; white-space: nowrap; }
+.fsr-note { margin: 1.2rem 0; padding: 0.8rem 1rem; border-left: 4px solid var(--pst-color-primary); border-radius: 8px; background: var(--rln-sidebar-bg); }
+.fsr-help { margin: 1.6rem 0; padding: 0.8rem 1rem; border-left: 4px solid #d9534f; border-radius: 8px; background: #fdecea; color: #8c2f26; }
+.fsr-help a { color: inherit; font-weight: 600; }
+html[data-theme="dark"] .fsr-help { background: #3a1d1b; color: #f5b7b0; }
+.fsr-img { margin: 1.2rem 0; text-align: center; }
+.fsr-img img, .fsr-img video { max-width: 100%; border: 1px solid var(--pst-color-border); border-radius: 12px; }
+.fsr-viewer { height: 416px; max-width: 100%; box-sizing: border-box; margin: 1.2rem 0; }
+.fsr-viewer .rln-viewer__stage { flex: 1 1 0; min-height: 0; height: auto; }
+.fsr-worlds { width: 100%; }
+.fsr-worlds td { border: 0; padding: 0.3rem; }
+.fsr-worlds img { border-radius: 10px; }
+.bd-article-container:has(.fsr-page) div.highlight { position: relative; }
+.bd-article-container:has(.fsr-page) .highlight-bash pre { padding-right: 5rem; white-space: pre-wrap; overflow-wrap: anywhere; }
+.fsr-copy { position: absolute; top: 0.4rem; right: 0.4rem; padding: 0.15rem 0.6rem; border: 1px solid var(--pst-color-border); border-radius: 6px; background: var(--pst-color-background); color: var(--pst-color-text-muted); font-size: 0.75rem; }
+.fsr-copy:hover { color: var(--pst-color-primary); border-color: var(--pst-color-primary); }
+@media (min-width: 1200px) {   /* text centred between the left sidebar and the right panel; top bar links stay in line with it */
+  :root:has(.fsr-page) .bd-main .bd-content .bd-article-container { margin-left: calc(var(--rln-center-pad) / -2 - 0.45rem); margin-right: calc(var(--rln-center-pad) / 2 + 0.45rem); }
+  :root:has(.fsr-page) .bd-header .navbar-header-items__start { margin-right: calc(1.55rem + var(--rln-center-pad) / 2) !important; }
+  :root:has(.fsr-page) .bd-sidebar-secondary { scrollbar-width: none; }   /* no scrollbar in the middle of the page */
+  :root:has(.fsr-page) .bd-sidebar-secondary::-webkit-scrollbar { display: none; }
+}

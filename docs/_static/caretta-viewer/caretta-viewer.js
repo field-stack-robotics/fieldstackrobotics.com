@@ -60,7 +60,7 @@ function build(root) {
 
   const caption = document.createElement("p");
   caption.className = "rln-viewer__caption";
-  caption.textContent = "Caretta, the same model the simulator uses. Drag to rotate, "
+  caption.textContent = root.dataset.caption || "Caretta, the same model the simulator uses. Drag to rotate, "
     + "click and scroll (or pinch) to zoom, right-drag to pan.";
 
   root.append(stage, bar, caption);
