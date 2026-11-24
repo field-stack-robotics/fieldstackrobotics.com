@@ -1,4 +1,4 @@
-# About & Contact
+# Contact
 
 I'm a robotics engineer. My robots work great on my desk. Outside, not so much.
 This site is about fixing that.
