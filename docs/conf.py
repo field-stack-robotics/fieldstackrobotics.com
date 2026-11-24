@@ -33,7 +33,7 @@ html_css_files = [
 GITHUB_USER = "field-stack-robotics"
 GITHUB_REPO = "fieldstackrobotics.com"
 # The GitHub box in the top bar links here (an organization or "owner/repo").
-GITHUB_BOX_REPO = "field-stack-robotics"
+GITHUB_BOX_REPO = "field-stack-robotics/caretta"
 # Discord server invite, used by the Discord box in the top bar (_templates/navbar-discord.html).
 DISCORD_INVITE = "https://discord.gg/NCBbzgu32"
 

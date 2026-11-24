@@ -15,4 +15,4 @@ loop to autonomy in the field. Join the email list to follow along.
 ```
 
 Prefer to chat? Join the [Discord server](https://discord.gg/NCBbzgu32) or follow
-the code on [GitHub](https://github.com/field-stack-robotics).
+the code on [GitHub](https://github.com/field-stack-robotics/caretta).

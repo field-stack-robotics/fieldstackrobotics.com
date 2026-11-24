@@ -40,7 +40,7 @@ Caretta is being designed and tested right now. Every step lands on this site:
 - [Stall and slip detection](../motors/stall-detection.md)
 
 Firmware, schematics and test data are on
-[GitHub](https://github.com/field-stack-robotics).
+[GitHub](https://github.com/field-stack-robotics/caretta).
 
 ## Get notified
 
