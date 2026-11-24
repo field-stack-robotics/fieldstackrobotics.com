@@ -3,7 +3,7 @@
      _static/signup.js shows the thank-you message in place. Keep id="signup": the sidebar card links to #signup. -->
 <div class="signup" id="signup">
   <p class="signup__title">Follow the build</p>
-  <p class="signup__lead">One short email every two weeks: what I built, what broke.</p>
+  <p class="signup__lead">Building Caretta in public. Every two weeks, I'll send you what worked and what didn't.</p>
   <form class="signup__form" action="https://app.kit.com/forms/10164332/subscriptions" method="post">
     <input type="email" name="email_address" placeholder="you@example.com" aria-label="Email address" autocomplete="email" required>
     <button type="submit">Subscribe</button>

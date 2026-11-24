@@ -23,7 +23,7 @@ html_theme = "pydata_sphinx_theme"
 html_title = "Field Stack Robotics"
 html_static_path = ["_static"]
 templates_path = ["_templates"]
-html_js_files = ["imu-widget.js", "sidebar-state.js", "theme-toggle.js", "heading-chart.js", "giscus-theme.js", "signup.js", "external-links.js"]  # home page IMU animation, left sidebar open/closed sections, light/dark button, heading error chart, comments light/dark, email box, external links in a new tab
+html_js_files = ["imu-widget.js", "sidebar-state.js", "heading-chart.js", "signup.js", "external-links.js"]  # home page IMU animation, left sidebar open/closed sections, heading error chart, email box, external links in a new tab
 html_css_files = [
     "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
     "custom.css",  # turquoise colors live here
@@ -166,7 +166,7 @@ html_theme_options = {
                     '<span class="rln-ann-short"><a href="/robots/index.html">Building Caretta, our first kit →</a></span>',  # short version on phones
     "navbar_align": "left",
     "navbar_center": ["navbar-nav-home"],  # Home, Robot, Try it, Contact (_templates/navbar-nav-home.html)
-    "navbar_end": ["navbar-github", "navbar-discord", "theme-switcher"],  # light/dark button last (_templates/theme-switcher.html)
+    "navbar_end": ["navbar-github", "navbar-discord"],  # no light/dark button: the site is light only (_templates/layout.html)
     "navbar_persistent": [],  # search lives at the top of the left sidebar
     # Right sidebar: card on top, then "On this page"
     "secondary_sidebar_items": ["sidebar-card", "page-toc", "edit-this-page"],
@@ -188,7 +188,7 @@ html_context = {
     "github_repo": GITHUB_REPO,
     "github_version": "main",
     "doc_path": "docs",
-    "default_mode": "light",  # start in light mode; the button toggles light <-> dark (theme-toggle.js)
+    "default_mode": "light",  # light only, see _templates/layout.html
     "coming_soon_pages": COMING_SOON_PAGES,  # these get a noindex tag (_templates/layout.html)
     "noindex_pages": sorted(NOINDEX_PAGES),
 }

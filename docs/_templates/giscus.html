@@ -1,6 +1,5 @@
 {# Comments under every page except the home page, About & Contact, Join and coming soon pages. Comments are stored in
-   GitHub Discussions (Announcements category) of the site repo; settings come from giscus.app.
-   _static/giscus-theme.js keeps the comment box in light/dark mode with the site. #}
+   GitHub Discussions (Announcements category) of the site repo; settings come from giscus.app. #}
 {%- if pagename not in [root_doc, "about", "join", "try"] and pagename not in coming_soon_pages %}
 <section class="rln-comments" aria-label="Comments">
   <h2 class="rln-comments__title">Comments</h2>
@@ -18,7 +17,7 @@
         "data-reactions-enabled": "1",
         "data-emit-metadata": "0",
         "data-input-position": "bottom",
-        "data-theme": document.documentElement.dataset.theme === "dark" ? "dark" : "light",
+        "data-theme": "light",
         "data-lang": "en",
         "data-loading": "lazy",
         "crossorigin": "anonymous"

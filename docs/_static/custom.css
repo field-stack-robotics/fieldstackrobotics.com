@@ -77,7 +77,6 @@ html[data-theme="dark"]  { --rln-header-bg: #12181a; --rln-header-fg: #ffffff; -
 .bd-header .navbar-nav .current .nav-link { box-shadow: none; font-weight: 500; }
 .bd-header .navbar-header-items__end .nav-link,
 .bd-header .navbar-header-items__end i,
-.bd-header .theme-switch-button span,
 .bd-header .bd-header__inner button { color: var(--rln-header-fg) !important; }
 
 /* ---------- Left sidebar: own background, a line between it and the page ---------- */
@@ -364,13 +363,6 @@ a.rb-strip.rb-strip--one { grid-template-columns: 1fr; }   /* home page: Caretta
 .rln-comments { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--pst-color-border); }
 .rln-comments__title { font-size: 1.25rem; margin: 0 0 1rem; }
 
-/* Light/dark button (_templates/theme-switcher.html): same rounded hover as the GitHub and Discord boxes */
-.bd-header .rln-theme { display: grid !important; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 10px !important; transition: background 0.15s; box-shadow: none !important; border: 0 !important; }
-.bd-header .rln-theme::before, .bd-header .rln-theme::after { display: none !important; }
-.bd-header .rln-theme:hover { background: var(--rln-header-hover) !important; }
-.bd-header .rln-theme__icon { font-size: 1.25rem; transition: transform 0.25s; }
-.bd-header .rln-theme:hover .rln-theme__icon { transform: rotate(-20deg) scale(1.1); }
-html[data-theme="light"] .rln-theme__icon--to-light, html[data-theme="dark"] .rln-theme__icon--to-dark { display: none; }
 
 /* ---------- Fluid layout: the page keeps the same proportions on every screen (like docs.nav2.org) ----------
    Base text size: 16px up to ~1440px wide, then grows to 17.6px at 1920px and 18px at most.

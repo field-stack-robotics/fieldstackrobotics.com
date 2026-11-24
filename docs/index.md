@@ -23,84 +23,64 @@ a current sensor, a BNO055 IMU, a 2D LiDAR and a Raspberry Pi running ROS 2.
   <span class="rb-strip__item rb-strip__item--now">Caretta<em><span class="rb-pulse"></span>Building now</em></span>
 </a>
 
-:::{note}
-Pages marked "coming soon" are on [the roadmap](getting-started/roadmap.md)
-but not written yet. Subscribe below to get them when they're out.
-:::
-
 ## Where do I start?
 
-- **New here?** Read [the roadmap](getting-started/roadmap.md) and the
-  [hardware overview](getting-started/hardware.md).
-- **Working on motor control?** Start with
-  [Reading encoders](motors/encoder-basics.md), then
-  [PID speed control](motors/pid-speed-control.md).
-- **Getting a robot to navigate on its own?** See [Navigation](navigation/index.md).
+**Get your first robot running today, right on your computer.** Download Caretta, drive it
+through a house and let it draw the map. Then click anywhere and watch it find its own way there.
 
-## More information
+No hardware needed, just a computer with Ubuntu 22.04.
+
+<p><a class="rln-card__button" href="try.html">Try Caretta now →</a></p>
+
+## Concepts
 
 ::::{grid} 1 1 2 2
 :gutter: 3
 
 :::{grid-item-card} Motors and teleop
-:link: motors/index
-:link-type: doc
+:class-card: sd-card-hover
 
-Encoders, PID + feedforward, stall and slip detection
+Encoders and speed control
 :::
 
 :::{grid-item-card} ROS 2
-:link: ros2/index
-:link-type: doc
+:class-card: sd-card-hover
 
-micro-ROS, timestamps, TF and rosbags
+Connecting the robot's parts
 :::
 
 :::{grid-item-card} Odometry and fusion
-:link: odometry/index
-:link-type: doc
+:class-card: sd-card-hover
 
-Wheel, IMU and LiDAR odometry, and my own EKF
+How far the robot has moved
 :::
 
 :::{grid-item-card} Localization experiments
-:link: localization/index
-:link-type: doc
+:class-card: sd-card-hover
 
-UWB, Wi-Fi, BLE, RFID and AprilTag, measured
+Where the robot is
 :::
 
 :::{grid-item-card} SLAM
-:link: slam/index
-:link-type: doc
+:class-card: sd-card-hover
 
-2D LiDAR, visual SLAM and mapping very large spaces
+Building a map
 :::
 
 :::{grid-item-card} Navigation
-:link: navigation/index
-:link-type: doc
+:class-card: sd-card-hover
 
-Nav2, indoor and outdoor with GPS + RTK, and field failures
+Driving to a goal, indoors and outdoors
 :::
 ::::
-
-## Latest posts
-
-| Date     | Post                                                  | Section           |
-|----------|-------------------------------------------------------|-------------------|
-| Oct 2026 | [Stall and slip detection](motors/stall-detection.md) | Motors and teleop |
-| Oct 2026 | [PID speed control](motors/pid-speed-control.md)      | Motors and teleop |
-| Oct 2026 | [Reading encoders](motors/encoder-basics.md)          | Motors and teleop |
 
 ## Resources
 
 | Resource | Description |
 |----------|-------------|
 | [GitHub](https://github.com/field-stack-robotics) | Source code, firmware and test data for every post |
-| [YouTube](https://www.youtube.com/) | Short videos of each experiment |
-| [Nav2 documentation](https://docs.nav2.org/) | The navigation stack this project builds on |
-| [ROS 2 documentation](https://docs.ros.org/) | Concepts, tutorials and API reference |
+| [YouTube](https://www.youtube.com/@FieldStackRobotics) | Short videos of each experiment |
+| [Discord](https://discord.gg/NCBbzgu32) | Have a question? Come and ask, we answer here |
 
 ```{include} _snippets/signup.md
 ```

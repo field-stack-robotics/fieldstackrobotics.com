@@ -12,6 +12,14 @@
 {# Coming soon pages: keep them out of Google until the post is written. #}
 {%- block extrahead %}
   {{ super() }}
+  {# Light only: also resets visitors who picked dark mode when the site still had the button. #}
+  <script>
+    (function () {
+      var root = document.documentElement;
+      root.dataset.mode = root.dataset.theme = "light";
+      try { localStorage.setItem("mode", "light"); localStorage.setItem("theme", "light"); } catch (e) { /* storage blocked */ }
+    })();
+  </script>
   {%- if pagename in coming_soon_pages %}
   <meta name="robots" content="noindex">
   <style>.editthispage { display: none; }</style>{# no "Edit on GitHub" link to the draft #}
