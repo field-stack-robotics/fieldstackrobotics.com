@@ -4,7 +4,7 @@ orphan: true
 
 # Try Caretta
 
-Install Caretta on your computer and drive it in Gazebo, step by step.
+Install Caretta on your computer, then drive, map and navigate in Gazebo, step by step.
 
 **Requirements:**
 
@@ -124,6 +124,10 @@ cd ~/caretta_ws
 source install/setup.bash
 ```
 
+```{raw} html
+<div class="fsr-help"><strong>Having a problem?</strong> Ask us on <a href="https://discord.gg/NCBbzgu32" target="_blank" rel="noopener">Discord</a>.</div>
+```
+
 ## 3. Start the simulation
 
 ### 3.1 Launch Gazebo
@@ -172,6 +176,121 @@ ros2 run teleop_twist_keyboard teleop_twist_keyboard \
 
 ```{raw} html
 <p align="center" class="fsr-img"><video src="_static/try/hero.mp4" aria-label="Caretta driving in Gazebo and RViz" width="760" autoplay loop muted playsinline></video></p>
+```
+
+## 4. SLAM
+
+Caretta draws a map while you drive it. Here it maps the office world:
+
+```{raw} html
+<p align="center" class="fsr-img"><video src="_static/try/slam_office.mp4" aria-label="Caretta mapping the office world" width="760" autoplay loop muted playsinline></video></p>
+```
+
+### 4.1 Build the map
+
+Stop the simulation and the teleop with **Ctrl+C**. Start Gazebo again without RViz, because SLAM opens its own:
+
+```bash
+ros2 launch caretta_gazebo gazebo.launch.py world:=caretta_house
+```
+
+Open a new terminal and start SLAM:
+
+```bash
+source ~/caretta_ws/install/setup.bash
+ros2 launch caretta_navigation slam.launch.py use_sim_time:=true
+```
+
+```{raw} html
+<div class="fsr-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="fsr-term">
+<span style="color:#3fd2c7">user@ubuntu</span>:<span style="color:#5fafff">~</span>$ ros2 launch caretta_navigation slam.launch.py use_sim_time:=true<br><span style="color:#7ee787">[INFO]</span> [async_slam_toolbox_node-1]: process started<br><span style="color:#7ee787">[INFO]</span> [rviz2-2]: process started<br>[async_slam_toolbox_node-1] <span style="color:#7ee787">[INFO]</span> [slam_toolbox]: Using solver plugin solver_plugins::CeresSolver<br>[async_slam_toolbox_node-1] Registering sensor: [Custom Described Lidar]
+</div>
+```
+
+Open a third terminal and drive slowly through every room:
+
+```bash
+source ~/caretta_ws/install/setup.bash
+ros2 run teleop_twist_keyboard teleop_twist_keyboard \
+  --ros-args -r cmd_vel:=cmd_vel_teleop
+```
+
+The map grows in RViz as you drive. White is free space, black is an obstacle:
+
+```{raw} html
+<p align="center" class="fsr-img"><img src="_static/try/slam_map.png" alt="Finished map of the house in RViz" width="520"></p>
+```
+
+### 4.2 Save the map
+
+Keep SLAM running. Open a new terminal, go to the workspace and save the map:
+
+```bash
+cd ~/caretta_ws
+source install/setup.bash
+ros2 run nav2_map_server map_saver_cli -f my_map \
+  --ros-args -p use_sim_time:=true
+```
+
+```{raw} html
+<div class="fsr-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="fsr-term">
+<span style="color:#3fd2c7">user@ubuntu</span>:<span style="color:#5fafff">~/caretta_ws</span>$ ros2 run nav2_map_server map_saver_cli -f my_map --ros-args -p use_sim_time:=true<br><span style="color:#7ee787">[INFO]</span> [map_saver]: Saving map from 'map' topic to 'my_map' file<br><span style="color:#7ee787">[INFO]</span> [map_io]: Received a 160 X 120 map @ 0.05 m/pix<br><span style="color:#7ee787">[INFO]</span> [map_io]: Writing map occupancy data to my_map.pgm<br><span style="color:#7ee787">[INFO]</span> [map_io]: Writing map metadata to my_map.yaml<br><span style="color:#7ee787">[INFO]</span> [map_saver]: Map saved successfully
+</div>
+```
+
+You now have two files:
+
+- `my_map.pgm`: the picture of the map
+- `my_map.yaml`: its resolution and origin
+
+## 5. Navigation
+
+Caretta drives to a goal on its own, on the map you just saved:
+
+```{raw} html
+<p align="center" class="fsr-img"><video src="_static/try/nav2.mp4" aria-label="Caretta driving to a goal with Nav2" width="760" autoplay loop muted playsinline></video></p>
+```
+
+### 5.1 Start Nav2
+
+Stop everything with **Ctrl+C** and start Gazebo again, so the robot is back at the start of the map:
+
+```bash
+ros2 launch caretta_gazebo gazebo.launch.py world:=caretta_house
+```
+
+Open a new terminal and start navigation with your map. It starts AMCL, Nav2 and RViz:
+
+```bash
+source ~/caretta_ws/install/setup.bash
+ros2 launch caretta_navigation navigation.launch.py use_sim_time:=true \
+  map:=$HOME/caretta_ws/my_map.yaml
+```
+
+```{raw} html
+<div class="fsr-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="fsr-term">
+<span style="color:#3fd2c7">user@ubuntu</span>:<span style="color:#5fafff">~</span>$ ros2 launch caretta_navigation navigation.launch.py use_sim_time:=true map:=$HOME/caretta_ws/my_map.yaml<br><span style="color:#7ee787">[INFO]</span> [map_server-1]: process started<br><span style="color:#7ee787">[INFO]</span> [amcl-2]: process started<br><span style="color:#7ee787">[INFO]</span> [controller_server-4]: process started<br><span style="color:#7ee787">[INFO]</span> [planner_server-6]: process started<br><span style="color:#7ee787">[INFO]</span> [bt_navigator-8]: process started<br><span style="color:#7ee787">[INFO]</span> [rviz2-12]: process started<br>...<br>[lifecycle_manager-3] <span style="color:#7ee787">[INFO]</span> [lifecycle_manager_localization]: Managed nodes are active<br>[lifecycle_manager-11] <span style="color:#7ee787">[INFO]</span> [lifecycle_manager_navigation]: Managed nodes are active
+</div>
+```
+
+### 5.2 Send a goal
+
+In RViz, click **2D Goal Pose**, then click on the map where Caretta should go and drag to set the direction.
+
+Caretta plans a path and drives there. The terminal shows when it arrives:
+
+```{raw} html
+<div class="fsr-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="fsr-term">
+[bt_navigator-8] <span style="color:#7ee787">[INFO]</span> [bt_navigator]: Begin navigating from current location (-0.00, -0.00) to (2.00, 1.20)<br>[controller_server-4] <span style="color:#7ee787">[INFO]</span> [controller_server]: Received a goal, begin computing control effort.<br>[controller_server-4] <span style="color:#7ee787">[INFO]</span> [controller_server]: Reached the goal!<br>[bt_navigator-8] <span style="color:#7ee787">[INFO]</span> [bt_navigator]: Goal succeeded
+</div>
+```
+
+```{raw} html
+<div class="fsr-note"><strong>Note:</strong> The keyboard always wins. Start the teleop to take over at any time.</div>
 ```
 
 ```{raw} html
