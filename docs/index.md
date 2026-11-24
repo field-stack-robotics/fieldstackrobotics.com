@@ -78,7 +78,7 @@ Driving to a goal, indoors and outdoors
 
 | Resource | Description |
 |----------|-------------|
-| [GitHub](https://github.com/field-stack-robotics/caretta) | Source code, firmware and test data for every post |
+| [GitHub](https://github.com/field-stack-robotics/caretta) | Caretta's source code |
 | [YouTube](https://www.youtube.com/@FieldStackRobotics) | Short videos of each experiment |
 | [Discord](https://discord.gg/NCBbzgu32) | Have a question? Come and ask, we answer here |
 
