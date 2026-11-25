@@ -5,7 +5,7 @@
 Caretta has a software emergency stop. You publish `true` on `/e_stop`, and every velocity
 command is blocked. I tried it four times in the simulation, and one time the robot kept moving.
 
-<p align="center" class="fsr-img"><video src="../_static/blog/e-stop-crash.mp4" aria-label="Caretta hits a wall and tips over (animation)" width="100%" autoplay loop muted playsinline></video></p>
+<p align="center" class="fsr-img"><video src="../_static/blog/e-stop-crash.mp4?v=2" aria-label="Caretta hits a wall and tips over (animation)" width="100%" autoplay loop muted playsinline></video></p>
 <p class="fsr-caption">What could happen if the stop message never arrives.</p>
 
 ## The setup
@@ -67,7 +67,7 @@ Release it with ten messages. This also worked 20 times out of 20:
 ros2 topic pub --times 10 --rate 10 /e_stop std_msgs/msg/Bool "data: false"
 ```
 
-<p align="center" class="fsr-img"><video src="../_static/blog/e-stop-stop.mp4" aria-label="Caretta stops before the wall in Gazebo" width="100%" autoplay loop muted playsinline></video></p>
+<p align="center" class="fsr-img"><video src="../_static/blog/e-stop-stop.mp4?v=2" aria-label="Caretta stops before the wall in Gazebo" width="100%" autoplay loop muted playsinline></video></p>
 <p class="fsr-caption">With the new stop command, the robot stops before the wall.</p>
 
 ## What I learned
