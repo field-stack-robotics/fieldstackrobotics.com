@@ -537,3 +537,7 @@ html[data-theme="dark"] .fsr-help { background: #3a1d1b; color: #f5b7b0; }
 .signup--small .signup__form input { font-size: 0.88rem; }
 .signup--small .signup__form button { font-size: 0.85rem; padding: 0.3rem 0.9rem; }
 .fsr-post-back { margin-top: 1.5rem; }
+
+/* ---------- Footer: small, quiet text ---------- */
+.bd-footer, .bd-footer p, .bd-footer a { font-size: 0.75rem; }
+.bd-footer p { color: var(--pst-color-text-muted); }
