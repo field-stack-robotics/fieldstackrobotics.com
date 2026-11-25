@@ -541,3 +541,4 @@ html[data-theme="dark"] .fsr-help { background: #3a1d1b; color: #f5b7b0; }
 /* ---------- Footer: small, quiet text ---------- */
 .bd-footer, .bd-footer p, .bd-footer a { font-size: 0.75rem; }
 .bd-footer p { color: var(--pst-color-text-muted); }
+.fsr-caption { margin: -0.7rem 0 1.4rem; text-align: center; font-size: 0.85rem; color: var(--pst-color-text-muted); }   /* under a video in a post */
