@@ -6,7 +6,7 @@ Caretta has a software emergency stop. You publish `true` on `/e_stop`, and ever
 command is blocked. I tried it four times in the simulation, and one time the robot kept moving.
 
 <p align="center" class="fsr-img"><video src="../_static/blog/e-stop-crash.mp4" aria-label="Caretta hits a wall and tips over (animation)" width="560" autoplay loop muted playsinline></video></p>
-<p class="fsr-caption">Dramatized in the simulation: the stop message never arrives and the robot hits the wall.</p>
+<p class="fsr-caption">What could happen if the stop message never arrives.</p>
 
 ## The setup
 
