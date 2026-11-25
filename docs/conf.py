@@ -23,7 +23,7 @@ html_theme = "pydata_sphinx_theme"
 html_title = "Field Stack Robotics"
 html_static_path = ["_static"]
 templates_path = ["_templates"]
-html_js_files = ["imu-widget.js", "sidebar-state.js", "heading-chart.js", "signup.js", "external-links.js"]  # home page IMU animation, left sidebar open/closed sections, heading error chart, email box, external links in a new tab
+html_js_files = ["imu-widget.js", "sidebar-state.js", "sidebar-steps.js", "heading-chart.js", "signup.js", "external-links.js"]  # home page IMU animation, left sidebar open/closed sections, left sidebar current step, heading error chart, email box, external links in a new tab
 html_css_files = [
     "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
     "custom.css",  # turquoise colors live here
@@ -46,17 +46,16 @@ sitemap_url_scheme = "{link}"
 html_extra_path = ["_extra"]  # robots.txt goes to the site root
 
 # --- Published pages and "coming soon" pages ---
-# Only the pages listed here are shown in full. Every other page is built as a
-# "coming soon" page: its title and first paragraph, a coming soon note and the
-# email box. The draft text stays in the .md file but is not published anywhere
-# (not on the page, not in search, not in Google).
-# To publish a post when it's ready, add its path here (without .md).
+# Only the pages listed here are built. Every other page is a draft: the .md file
+# stays in the repo, but it is not on the site (no page, not in search).
+# To publish a post when it's ready, add its path here (without .md) and to a toctree.
 PUBLISHED_PAGES = {
     "index",
     "about",
-    "robots/index",
     "join",
     "try",
+    "blog/index",
+    "blog/e-stop-once",
 }
 
 import re as _re
@@ -73,10 +72,32 @@ COMING_SOON_PAGES = sorted(
     if page not in PUBLISHED_PAGES
 )
 
+exclude_patterns += [f"{page}.md" for page in COMING_SOON_PAGES]  # drafts are not built: no page, no menu entry, not in search
+
+
+
+DISCORD_NOTE = f'<div class="fsr-help"><strong>Having a problem?</strong> Ask us on <a href="{DISCORD_INVITE}" target="_blank" rel="noopener">Discord</a>.</div>'
+
+
+def _post_extras(text):
+    """Every blog post gets the Discord note (above "What I learned", or at the end), the small
+    email box, the All posts button and Copy buttons on its commands."""
+    note = f"\n{DISCORD_NOTE}\n\n"
+    head = "## What I learned\n"
+    text = text.replace(head, note.lstrip("\n") + head, 1) if head in text else text + "\n" + note
+    return (
+        text
+        + "\n\n```{include} /_snippets/signup-post.md\n```\n\n"
+        + '<p class="fsr-post-back"><a class="rln-card__button" href="index.html">← All posts</a></p>\n\n'
+        + '<div class="fsr-page"></div>\n<script src="../_static/try-page.js" defer></script>\n'
+    )
+
 
 def _coming_soon(app, docname, source):
     """Swap the body of an unpublished page for the coming soon version."""
     if docname in PUBLISHED_PAGES:
+        if docname.startswith("blog/") and docname != "blog/index":
+            source[0] = _post_extras(source[0])
         return
     text = source[0]
     title = next((line for line in text.splitlines() if line.startswith("# ")), "# Coming soon")
@@ -121,6 +142,25 @@ def _target_page(pagename, href):
 _SIDEBAR_SUBLINK = _re.compile(r'(<li class="toctree-l[2-9][^"]*">)<a class="([^"]*)" href="([^"]*)">(.*?)</a>', _re.S)
 
 
+# Pages that are only in the top bar, not in the left sidebar.
+TOP_BAR_ONLY = {"blog/index", "about"}
+
+
+def _try_steps(app, pagename):
+    """The main sections of the Try page as a list for the left sidebar."""
+    from docutils import nodes
+    from markupsafe import escape
+    href = app.builder.get_relative_uri(pagename, "try")
+    top = app.env.tocs["try"]
+    sections = [n for n in top[0].children if isinstance(n, nodes.bullet_list)]
+    rows = []
+    for item in sections[0].children if sections else []:
+        ref = next(iter(item.findall(nodes.reference)))
+        label = ref.astext()
+        rows.append(f'<li class="toctree-l2"><a class="reference internal" href="{href}{ref["anchorname"]}">{escape(label)}</a></li>')
+    return "<ul>" + "".join(rows) + "</ul>"
+
+
 def _sidebar_and_footer(app, pagename, templatename, context, doctree):
     """Posts that aren't published yet are listed in the left sidebar as plain text
     (not links), and the previous/next links at the bottom skip them."""
@@ -136,10 +176,26 @@ def _sidebar_and_footer(app, pagename, templatename, context, doctree):
     if "generate_toctree_html" in context:
         original = context["generate_toctree_html"]
         from markupsafe import Markup
-        context["generate_toctree_html"] = lambda *a, **kw: Markup(unlink_posts(str(original(*a, **kw))))
+
+        def guide_only(html):
+            """Leave out the pages that are already in the top bar, and list the steps under Try Caretta."""
+            def row(m):
+                page = _target_page(pagename, m.group(2))
+                if page in TOP_BAR_ONLY:
+                    return ""
+                return m.group(1) + (_try_steps(app, pagename) if page == "try" else "") + "</li>"
+            html = _re.sub(r'<li class="toctree-l1[^"]*has-children[^"]*"><a [^>]*href="([^"]*)".*?</details></li>',  # pages with sub-pages (Blog)
+                           lambda m: "" if _target_page(pagename, m.group(1)) in TOP_BAR_ONLY else m.group(0), html, flags=_re.S)
+            return _re.sub(r'(<li class="toctree-l1[^"]*"><a [^>]*href="([^"]*)"[^>]*>[^<]*</a>)</li>', row, html)
+
+        context["generate_toctree_html"] = lambda *a, **kw: Markup(guide_only(unlink_posts(str(original(*a, **kw)))))
 
     for key in ("prev", "next"):
         link = context.get(key)
+        target = _target_page(pagename, link["link"]) if link else None
+        if pagename.startswith("blog/") or (target or "").startswith("blog/"):  # the blog is separate from the other pages
+            context[key] = None
+            continue
         if link and _is_unpublished_post(_target_page(pagename, link.get("link", "")) or ""):
             context[key] = None
 
@@ -162,10 +218,10 @@ html_theme_options = {
         "alt_text": "Field Stack Robotics - Home",
     },
     # Thin bar above the top bar on every page. Delete this line to hide it.
-    "announcement": '<span class="rln-ann-long">Building Caretta, our first robot kit, in the open. <a href="/robots/index.html">Meet Caretta →</a></span>'
-                    '<span class="rln-ann-short"><a href="/robots/index.html">Building Caretta, our first kit →</a></span>',  # short version on phones
+    "announcement": '<span class="rln-ann-long">Building Caretta, our first robot kit, in the open. <a href="/try.html#meet-caretta">Meet Caretta →</a></span>'
+                    '<span class="rln-ann-short"><a href="/try.html#meet-caretta">Building Caretta, our first kit →</a></span>',  # short version on phones
     "navbar_align": "left",
-    "navbar_center": ["navbar-nav-home"],  # Home, Robot, Try it, Contact (_templates/navbar-nav-home.html)
+    "navbar_center": ["navbar-nav-home"],  # Home, Try it, Blog, Contact (_templates/navbar-nav-home.html)
     "navbar_end": ["navbar-github", "navbar-discord"],  # no light/dark button: the site is light only (_templates/layout.html)
     "navbar_persistent": [],  # search lives at the top of the left sidebar
     # Right sidebar: card on top, then "On this page"
@@ -175,7 +231,7 @@ html_theme_options = {
     "show_nav_level": 2,
     "navigation_depth": 3,
     "use_edit_page_button": True,
-    "article_footer_items": ["giscus"],  # comments under every page except home (_templates/giscus.html)
+    "article_footer_items": [],  # comments are off for now; to turn them on: ["giscus"] (_templates/giscus.html)
     "footer_start": ["copyright"],
     "footer_end": ["sphinx-version"],
 }
@@ -193,7 +249,7 @@ html_context = {
     "noindex_pages": sorted(NOINDEX_PAGES),
 }
 
-# Same left sidebar on every page, home page included: the whole site, one page under another.
+# Same left sidebar on every page, home page included: search and the guides.
 html_sidebars = {"**": ["search-field", "sidebar-nav-full"]}
 
 # Hide the "Show Source" box in the right sidebar.

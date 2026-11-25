@@ -1,3 +1,5 @@
+{#- Not on blog posts: they end with their own email box (_snippets/signup-post.md). -#}
+{%- if not (pagename.startswith("blog/") and pagename != "blog/index") %}
 {# Card at the top of the right sidebar. Change the text, link and button here. #}
 <div class="rln-card">
   <p class="rln-card__title">Follow the build</p>
@@ -14,3 +16,4 @@
   </svg>
   <a class="rln-card__button" href="{{ pathto('join') }}">Subscribe</a>
 </div>
+{%- endif %}

@@ -1,5 +1,5 @@
-// Try page: a Copy button on every command block. Loaded only by try.md.
-document.querySelectorAll(".highlight-bash .highlight").forEach((box) => {
+// A Copy button on every command and YAML block. Loaded by try.md and by blog posts (conf.py).
+document.querySelectorAll(".highlight-bash .highlight, .highlight-yaml .highlight").forEach((box) => {
   const pre = box.querySelector("pre");
   const b = document.createElement("button");
   b.type = "button";

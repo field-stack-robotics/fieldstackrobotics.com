@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
+  <rect width="320" height="200" fill="#1f3b3a"/>
+  <g transform="translate(0 -24)">
+    <rect x="186" y="120" width="96" height="34" rx="8" fill="#f2b632"/>
+    <rect x="206" y="104" width="56" height="20" fill="#7f1d1d"/>
+    <path d="M190 106a44 34 0 0 1 88 0z" fill="#d9413a"/>
+    <path d="M204 92a30 22 0 0 1 26-16" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="5" stroke-linecap="round"/>
+    <g fill="none" stroke="#8fdcd5" stroke-width="4" stroke-linecap="round">
+      <path d="M36 104H92"/>
+      <path d="M112 104h8m12 0h8" stroke-opacity=".5"/>
+      <path d="M152 94l20 20m0-20l-20 20" stroke="#e8743b" stroke-width="5"/>
+    </g>
+    <text x="36" y="86" fill="#e3efed" font-size="15" font-family="ui-monospace,Menlo,monospace">true</text>
+    <text x="36" y="180" fill="#9fc4c0" font-size="13" font-family="ui-monospace,Menlo,monospace">/e_stop</text>
+  </g>
+</svg>

@@ -5,8 +5,8 @@
 
 <div class="rb-hero">
   <p class="rb-hero__eyebrow">Field Stack Robotics</p>
-  <p class="rb-hero__lead">Caretta is our first robot: a small indoor kit that every
-  post on this site is built and tested on. Open source, ROS 2.</p>
+  <p class="rb-hero__lead">Caretta is our first robot: a small, open source
+  indoor robot that runs ROS 2.</p>
 </div>
 
 <div class="rb-grid rb-grid--focus">
@@ -30,7 +30,7 @@
     <header class="rb-card__top"><span class="rb-badge rb-badge--now"><span class="rb-pulse"></span>Building now</span></header>
     <p class="rb-card__model">Indoor robot</p>
     <h3 class="rb-card__name">Caretta</h3>
-    <p class="rb-card__lead">A solder-free first kit that matches the blog series one to one.</p>
+    <p class="rb-card__lead">A solder-free kit you can build and learn on.</p>
     <p class="rb-card__for">For students, researchers and teaching labs</p>
   </div>
   <div class="rb-card__side">
@@ -40,7 +40,7 @@
       <li>2D LiDAR, Raspberry Pi 5 (optional)</li>
       <li>Add-on: warehouse and fleet pack</li>
     </ul>
-    <span class="rb-card__cta rb-card__cta--soon">Details coming soon</span>
+    <a class="rb-card__cta" href="../try.html">Try Caretta now →</a>
   </div>
 </article>
 <!-- 3D model of Caretta, built from the robot's URDF (tools/make_caretta_glb.py).
@@ -51,20 +51,8 @@
 </div>
 <script type="module" src="../_static/caretta-viewer/caretta-viewer.js"></script>
 
-## Built on Caretta
-
-Every post on this site runs on Caretta first: motor control, odometry, EKF and
-navigation, all on the same hardware. When the kit is ready, you can follow the
-posts step by step on exactly the same robot.
-
 (waitlist)=
 ## Get notified
 
 ```{include} ../_snippets/signup.md
-```
-
-```{toctree}
-:hidden:
-
-caretta
 ```

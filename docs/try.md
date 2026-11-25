@@ -1,7 +1,3 @@
----
-orphan: true
----
-
 # Try Caretta
 
 Install Caretta on your computer, then drive, map and navigate in Gazebo, step by step.
