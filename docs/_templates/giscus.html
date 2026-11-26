@@ -1,6 +1,6 @@
 {# Comments under every page except the home page, About & Contact, Join and coming soon pages. Comments are stored in
    GitHub Discussions (Announcements category) of the site repo; settings come from giscus.app. #}
-{%- if pagename not in [root_doc, "about", "join", "try"] and pagename not in coming_soon_pages %}
+{%- if pagename not in [root_doc, "contact", "join", "try"] and pagename not in coming_soon_pages %}
 <section class="rln-comments" aria-label="Comments">
   <h2 class="rln-comments__title">Comments</h2>
   <script>

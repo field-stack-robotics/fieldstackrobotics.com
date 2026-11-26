@@ -89,5 +89,5 @@ Driving to a goal, indoors and outdoors
 
 try
 Blog <blog/index>
-Contact <about>
+Contact <contact>
 ```

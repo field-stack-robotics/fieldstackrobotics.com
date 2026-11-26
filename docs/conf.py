@@ -51,7 +51,7 @@ html_extra_path = ["_extra"]  # robots.txt goes to the site root
 # To publish a post when it's ready, add its path here (without .md) and to a toctree.
 PUBLISHED_PAGES = {
     "index",
-    "about",
+    "contact",
     "join",
     "try",
     "blog/index",
@@ -148,8 +148,8 @@ _SIDEBAR_SUBLINK = _re.compile(r'(<li class="toctree-l[2-9][^"]*">)<a class="([^
 
 
 # Pages that are only in the top bar, not in the left sidebar.
-TOP_BAR_ONLY = {"blog/index", "about"}
-TOP_BAR_PAGES = {"index", "try", "blog/index", "about"}  # Home, Try it, Blog, Contact: no previous/next links
+TOP_BAR_ONLY = {"blog/index", "contact"}
+TOP_BAR_PAGES = {"index", "try", "blog/index", "contact"}  # Home, Try it, Blog, Contact: no previous/next links
 
 
 def _try_steps(app, pagename):
@@ -259,7 +259,7 @@ html_theme_options = {
     "navbar_end": ["navbar-github", "navbar-discord"],  # no light/dark button: the site is light only (_templates/layout.html)
     "navbar_persistent": [],  # search lives at the top of the left sidebar
     # Right sidebar: card on top, then "On this page"
-    "secondary_sidebar_items": ["sidebar-card", "page-toc", "edit-this-page"],
+    "secondary_sidebar_items": {"**": ["sidebar-card", "page-toc", "edit-this-page"], "contact": ["sidebar-card"]},  # no "Edit on GitHub" on Contact
     "show_toc_level": 2,
     # Left sidebar: every section starts open, with its pages listed underneath (like docs.nav2.org)
     "show_nav_level": 2,

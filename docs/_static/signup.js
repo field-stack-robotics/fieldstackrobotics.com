@@ -8,6 +8,7 @@ document.addEventListener("submit", async (event) => {
   const form = event.target.closest(".signup__form");
   if (!form) return;
   event.preventDefault();
+  if (!form.getAttribute("action")) return;   // form not connected to Kit yet (kit early access)
   const box = form.closest(".signup");
   const message = box.querySelector(".signup__done");
   const button = form.querySelector("button");

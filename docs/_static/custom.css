@@ -122,7 +122,15 @@ html[data-theme="light"] .bd-sidebar-primary nav.bd-links li > a.current { color
 .rln-card__button { display: inline-block; background: var(--pst-color-primary); color: var(--pst-color-background) !important;
   font-weight: 600; padding: 0.45rem 1.2rem; border-radius: 6px; text-decoration: none !important; }
 .rln-card__button:hover { filter: brightness(1.1); }
+.rln-card > .rln-card__button { font-size: 1rem; }   /* same size as the Subscribe button of the email card */
 @media (min-width: 1200px) { .rln-card { margin-right: calc(-1 * min(1.5rem, var(--rln-center-pad))); } }   /* card a little wider, toward the right, only where the screen has room */
+/* Logo and name in a card (kit early access on Contact), like the Nav2 card on docs.nav2.org */
+.rln-card__logo { display: block; width: 110px; margin: 0.4rem auto 0.3rem; }
+.rln-card .rln-card__word { margin: 0 0 0.2rem; text-align: center; font-weight: 800; letter-spacing: 0.35em; font-size: 1.05rem; color: var(--pst-color-text-base); }
+.rln-card .rln-card__word--small { margin: 0 0 1rem; font-weight: 600; letter-spacing: 0.45em; font-size: 0.7rem; color: var(--pst-color-primary); }
+.rln-card--kit .signup--card .signup__form button.rln-card__button { font-size: 0.9rem; padding: 0.35rem 1rem; }   /* smaller Notify me button */
+/* One email form per page: if the text has its own email box (not the phone-only one), hide the email card. */
+.bd-page-width:has(.bd-article .signup:not(.fsr-mobile-only .signup)) .rln-card--email { display: none; }
 /* Email field in the card: field on top, the same button underneath (overrides the pill of .signup__form). */
 .signup.signup--card { background: none; padding: 0; margin: 0; }
 .signup--card .signup__form { display: block; max-width: none; padding: 0; background: none; border: 0; border-radius: 0; box-shadow: none; }

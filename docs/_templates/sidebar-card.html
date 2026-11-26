@@ -1,7 +1,27 @@
 {#- Not on blog posts: they end with their own email box (_snippets/signup-post.md). -#}
 {%- if not (pagename.startswith("blog/") and pagename != "blog/index") %}
-{# Card at the top of the right sidebar. Change the text, link and button here. #}
-<div class="rln-card">
+{# Card at the top of the right sidebar. Change the text, link and button here.
+   One email form per page: the Contact page has its own, so there the card points to Discord.
+   Other pages with an email box in the text hide the email card (custom.css, .rln-card--email). #}
+{%- if pagename == "contact" %}
+{#- Contact: early access to the Caretta kit, Kit form 10245678 ("Caretta kit early access"), not the newsletter form.
+    Same box at the end of the page on phones (_snippets/kit-early-access.md). #}
+<div class="rln-card rln-card--kit">
+  <p class="rln-card__title">Get the Caretta kit first</p>
+  <p class="rln-card__text">The real robot kit is coming. Join early access and hear first when it ships.</p>
+  <img class="rln-card__logo" src="{{ pathto('_static/favicon.svg', 1) }}" alt="">
+  <p class="rln-card__word">FIELD STACK</p>
+  <p class="rln-card__word rln-card__word--small">ROBOTICS</p>
+  <div class="signup signup--card">
+    <form class="signup__form" action="https://app.kit.com/forms/10245678/subscriptions" method="post">
+      <input type="email" name="email_address" placeholder="you@example.com" aria-label="Email address" autocomplete="email" required>
+      <button type="submit" class="rln-card__button">Notify me</button>
+    </form>
+    <p class="signup__done" hidden data-success="You're on the list. Check your inbox to confirm." data-error="That email doesn't look right. Try again?"></p>
+  </div>
+</div>
+{%- else %}
+<div class="rln-card rln-card--email">
   <p class="rln-card__title">Follow the build</p>
   <p class="rln-card__text">Building Caretta in public. Every two weeks, I'll send you what worked and what didn't.</p>
   <svg class="rln-card__art" viewBox="0 0 120 96" aria-hidden="true">
@@ -23,4 +43,5 @@
     <p class="signup__done" hidden data-success="Almost there. Check your inbox to confirm." data-error="That email doesn't look right. Try again?"></p>
   </div>
 </div>
+{%- endif %}
 {%- endif %}
