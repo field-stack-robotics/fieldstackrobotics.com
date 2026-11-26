@@ -24,6 +24,10 @@ html_title = "Field Stack Robotics"
 html_static_path = ["_static"]
 templates_path = ["_templates"]
 html_js_files = ["imu-widget.js", "sidebar-state.js", "sidebar-steps.js", "heading-chart.js", "signup.js", "external-links.js", "clean-hash.js"]  # no #section in the address bar, home page IMU animation, left sidebar open/closed sections, left sidebar current step, heading error chart, email box, external links in a new tab
+# Visitor counts: Cloudflare Web Analytics (no cookies, so no cookie banner). Token from
+# dash.cloudflare.com -> Analytics & Logs -> Web Analytics -> fieldstackrobotics.com -> Manage site.
+html_js_files.append(("https://static.cloudflareinsights.com/beacon.min.js",
+                      {"type": "module", "data-cf-beacon": '{"token": "399841672aac41c897d5851a29a53098"}'}))
 html_css_files = [
     "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
     "custom.css",  # turquoise colors live here
