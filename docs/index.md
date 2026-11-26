@@ -29,7 +29,7 @@ a current sensor, a BNO055 IMU, a 2D LiDAR and a Raspberry Pi running ROS 2.
 **Get your first robot running today, right on your computer.** Download Caretta, drive it
 through a house and let it draw the map. Then click anywhere and watch it find its own way there.
 
-No hardware needed, just a computer with Ubuntu 22.04.
+No hardware needed, just a computer with Ubuntu 22.04 and ROS 2 Humble.
 
 <p><a class="rln-card__button" href="try">Try Caretta now →</a></p>
 

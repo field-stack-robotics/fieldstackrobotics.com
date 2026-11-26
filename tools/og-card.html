@@ -1,0 +1,26 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<!-- Preview card for link shares (docs/_static/og-image.png, 1200x630). To remake it: build the site, copy this file into
+     docs/_build/html/, serve that folder and take a 1200x630 screenshot, e.g.
+     google-chrome --headless=new --use-angle=swiftshader --enable-unsafe-swiftshader --hide-scrollbars --window-size=1200,630
+       --virtual-time-budget=10000 --screenshot=og-image.png http://127.0.0.1:8000/og-card.html -->
+<link rel="stylesheet" href="_static/custom.css">
+<style>
+  html,body{margin:0;width:1200px;height:630px;overflow:hidden;font-family:Inter,"Segoe UI",Helvetica,Arial,sans-serif;
+    --pst-color-primary:#0f766e;--pst-color-background:#fff;--pst-color-border:#d0dcda;--pst-color-text-base:#17292b;--pst-color-text-muted:#4b5d5f;--rln-sidebar-bg:#e4f0ee}
+  body{display:flex;background:#e4f0ee}
+  .l{width:560px;padding:70px 0 60px 72px;display:flex;flex-direction:column;justify-content:space-between;box-sizing:border-box;height:630px}
+  .l img{width:330px;display:block}
+  h1{font-size:64px;line-height:1.05;margin:0 0 22px;color:#0b3b38;font-weight:800;letter-spacing:-0.02em}
+  p{font-size:28px;line-height:1.35;margin:0;color:#2c4446}
+  .u{font-size:22px;color:#0f766e;font-weight:600}
+  .r{flex:1;position:relative}
+  .r .rln-viewer{position:absolute;inset:0;margin:0;border:0;background:transparent;padding:0}
+  .rln-viewer__bar,.rln-viewer__caption,.rln-viewer__status{display:none!important}
+  .rln-viewer__stage{width:640px!important;height:630px!important;aspect-ratio:auto!important;background:transparent!important;border:0!important}
+</style></head><body>
+<div class="l"><img src="_static/logo-stacked-light.svg" alt="">
+<div><h1>Meet Caretta</h1><p>An open source ROS 2 robot. Drive, map and navigate it in simulation today.</p></div>
+</div>
+<div class="r"><div class="rln-viewer" data-caretta-viewer></div></div>
+<script type="module" src="_static/caretta-viewer/caretta-viewer.js"></script>
+</body></html>

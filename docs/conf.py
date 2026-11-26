@@ -274,8 +274,22 @@ html_theme_options = {
     "footer_end": ["sphinx-version"],
 }
 
+# Link previews (Discord, Reddit, LinkedIn, Google): one line per page, about 150 characters.
+# Pages not listed here use the home page line. The picture is _static/og-image.png (tools/og-card.html).
+PAGE_DESCRIPTIONS = {
+    "index": "A build log and step-by-step guides for taking a small ROS 2 robot from simulation "
+             "to reliable autonomy in the real world.",
+    "try": "Install Caretta, an open source ROS 2 robot, then drive, map and navigate it in Gazebo, "
+           "step by step. Ubuntu 22.04 and ROS 2 Humble, no hardware needed.",
+    "blog/index": "Notes from building Caretta in public: what worked and what didn't.",
+    "blog/e-stop-once": "Under CPU load, a single e-stop message failed to stop twist_mux 7 times out of 20. "
+                        "What went wrong, and the simple fix.",
+    "contact": "Get in touch about Caretta, the open source ROS 2 robot, or join early access for the robot kit.",
+}
+
 # Used by the "Edit on GitHub" button.
 html_context = {
+    "page_descriptions": PAGE_DESCRIPTIONS,  # link previews (_templates/layout.html)
     "github_box_repo": GITHUB_BOX_REPO,
     "discord_invite": DISCORD_INVITE,
     "github_user": GITHUB_USER,

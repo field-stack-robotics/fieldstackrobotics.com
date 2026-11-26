@@ -12,6 +12,20 @@
 {# Coming soon pages: keep them out of Google until the post is written. #}
 {%- block extrahead %}
   {{ super() }}
+  {#- Link previews: description and picture (PAGE_DESCRIPTIONS in conf.py, _static/og-image.png). #}
+  {%- set page_title = docstitle if pagename == root_doc else (title|striptags) %}
+  {%- set page_desc = page_descriptions.get(pagename, page_descriptions["index"]) %}
+  <meta name="description" content="{{ page_desc|e }}">
+  <meta property="og:type" content="{{ 'article' if pagename.startswith('blog/') and pagename != 'blog/index' else 'website' }}">
+  <meta property="og:site_name" content="{{ docstitle|striptags|e }}">
+  <meta property="og:title" content="{{ page_title|e }}">
+  <meta property="og:description" content="{{ page_desc|e }}">
+  <meta property="og:url" content="{{ pageurl }}">
+  <meta property="og:image" content="https://fieldstackrobotics.com/_static/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Caretta, a small two-wheel ROS 2 robot, next to the Field Stack Robotics logo">
+  <meta name="twitter:card" content="summary_large_image">
   {# Light only: also resets visitors who picked dark mode when the site still had the button. #}
   <script>
     (function () {
