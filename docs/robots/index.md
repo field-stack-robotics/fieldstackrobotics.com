@@ -40,7 +40,7 @@
       <li>2D LiDAR, Raspberry Pi 5 (optional)</li>
       <li>Add-on: warehouse and fleet pack</li>
     </ul>
-    <a class="rb-card__cta" href="../try.html">Try Caretta now →</a>
+    <a class="rb-card__cta" href="../try">Try Caretta now →</a>
   </div>
 </article>
 <!-- 3D model of Caretta, built from the robot's URDF (tools/make_caretta_glb.py).

@@ -23,7 +23,7 @@ html_theme = "pydata_sphinx_theme"
 html_title = "Field Stack Robotics"
 html_static_path = ["_static"]
 templates_path = ["_templates"]
-html_js_files = ["imu-widget.js", "sidebar-state.js", "sidebar-steps.js", "heading-chart.js", "signup.js", "external-links.js"]  # home page IMU animation, left sidebar open/closed sections, left sidebar current step, heading error chart, email box, external links in a new tab
+html_js_files = ["imu-widget.js", "sidebar-state.js", "sidebar-steps.js", "heading-chart.js", "signup.js", "external-links.js", "clean-hash.js"]  # no #section in the address bar, home page IMU animation, left sidebar open/closed sections, left sidebar current step, heading error chart, email box, external links in a new tab
 html_css_files = [
     "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
     "custom.css",  # turquoise colors live here
@@ -88,7 +88,7 @@ def _post_extras(text):
     return (
         text
         + "\n\n```{include} /_snippets/signup-post.md\n```\n\n"
-        + '<p class="fsr-post-back"><a class="rln-card__button" href="index.html">← All posts</a></p>\n\n'
+        + '<p class="fsr-post-back"><a class="rln-card__button" href="./">← All posts</a></p>\n\n'
         + '<div class="fsr-page"></div>\n<script src="../_static/try-page.js" defer></script>\n'
     )
 
@@ -134,9 +134,14 @@ def _target_page(pagename, href):
     href = href.split("#", 1)[0]
     if not href:
         return pagename  # "#" = the page you are on
-    if "://" in href or not href.endswith(".html"):
+    if "://" in href:
         return None
-    return posixpath.normpath(posixpath.join(posixpath.dirname(pagename), href))[: -len(".html")]
+    href = href[: -len(".html")] if href.endswith(".html") else href
+    if href.endswith("/") or href in (".", ".."):
+        href = href.rstrip("/") + "/index"  # "blog/" = blog/index
+    if "." in href.rsplit("/", 1)[-1]:
+        return None  # a file, not a page
+    return posixpath.normpath(posixpath.join(posixpath.dirname(pagename), href))
 
 
 _SIDEBAR_SUBLINK = _re.compile(r'(<li class="toctree-l[2-9][^"]*">)<a class="([^"]*)" href="([^"]*)">(.*?)</a>', _re.S)
@@ -144,6 +149,7 @@ _SIDEBAR_SUBLINK = _re.compile(r'(<li class="toctree-l[2-9][^"]*">)<a class="([^
 
 # Pages that are only in the top bar, not in the left sidebar.
 TOP_BAR_ONLY = {"blog/index", "about"}
+TOP_BAR_PAGES = {"index", "try", "blog/index", "about"}  # Home, Try it, Blog, Contact: no previous/next links
 
 
 def _try_steps(app, pagename):
@@ -196,12 +202,40 @@ def _sidebar_and_footer(app, pagename, templatename, context, doctree):
         if pagename.startswith("blog/") or (target or "").startswith("blog/"):  # the blog is separate from the other pages
             context[key] = None
             continue
+        if pagename in TOP_BAR_PAGES or target in TOP_BAR_PAGES:  # the top bar already links these pages
+            context[key] = None
+            continue
         if link and _is_unpublished_post(_target_page(pagename, link.get("link", "")) or ""):
             context[key] = None
 
 
+# Links without ".html" (fieldstackrobotics.com/try). GitHub Pages serves try.html at /try,
+# so the files keep their names; only the links change.
+html_link_suffix = ""
+_INDEX_LINK = _re.compile(r'((?:href|content)="(?:https://fieldstackrobotics\.com/)?(?:\.\./)*(?:[\w-]+/)*)index(?=[#"])')
+
+
+_FULL_URL = _re.compile(r"(https://fieldstackrobotics\.com/[\w/-]*?)(?:(?<=/)index)?\.html(?=[#\"<])")
+
+
+def _clean_index_links(app, exception):
+    """"blog/index" -> "blog/", "index" -> "./": a folder's page has the folder's address."""
+    if exception or app.builder.format != "html":
+        return
+    from pathlib import Path
+    for path in list(Path(app.outdir).rglob("*.html")) + [Path(app.outdir) / "sitemap.xml"]:
+        if not path.exists():
+            continue
+        text = path.read_text(encoding="utf-8")
+        new = _INDEX_LINK.sub(lambda m: m.group(1) if not m.group(1).endswith('="') else m.group(1) + "./", text)
+        new = _FULL_URL.sub(r"\1", new)  # canonical link and sitemap.xml: https://fieldstackrobotics.com/try
+        if new != text:
+            path.write_text(new, encoding="utf-8")
+
+
 def setup(app):
     app.connect("source-read", _coming_soon)
+    app.connect("build-finished", _clean_index_links)
     app.connect("html-page-context", _sidebar_and_footer, priority=900)
 
 
@@ -218,8 +252,8 @@ html_theme_options = {
         "alt_text": "Field Stack Robotics - Home",
     },
     # Thin bar above the top bar on every page. Delete this line to hide it.
-    "announcement": '<span class="rln-ann-long">Building Caretta, our first robot kit, in the open. <a href="/try.html#meet-caretta">Meet Caretta →</a></span>'
-                    '<span class="rln-ann-short"><a href="/try.html#meet-caretta">Building Caretta, our first kit →</a></span>',  # short version on phones
+    "announcement": '<span class="rln-ann-long">Building Caretta, our first robot kit, in the open. <a href="/try#meet-caretta">Meet Caretta →</a></span>'
+                    '<span class="rln-ann-short"><a href="/try#meet-caretta">Building Caretta, our first kit →</a></span>',  # short version on phones
     "navbar_align": "left",
     "navbar_center": ["navbar-nav-home"],  # Home, Try it, Blog, Contact (_templates/navbar-nav-home.html)
     "navbar_end": ["navbar-github", "navbar-discord"],  # no light/dark button: the site is light only (_templates/layout.html)

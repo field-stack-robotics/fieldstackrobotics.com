@@ -3,7 +3,7 @@
 What I tried on Caretta, what worked and what didn't.
 
 <div class="fsr-posts">
-<a class="fsr-post-row" href="e-stop-once.html">
+<a class="fsr-post-row" href="e-stop-once">
   <span class="fsr-post-row__cover"><img src="../_static/blog/e-stop-once.svg" alt="A stop message that does not reach the e-stop button" width="320" height="200"></span>
   <span class="fsr-post-row__body">
     <span class="fsr-post-row__tags"><span>ROS 2</span><span>twist_mux</span></span>

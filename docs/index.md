@@ -2,7 +2,9 @@
 
 Field Stack Robotics is a build log and tutorial set for taking a small
 differential-drive robot from the bench to reliable autonomy in the field.
-Start in simulation today; the real robot comes next. The goal is simple: make an autonomous robot work reliably in the real
+Start in simulation today; the real robot comes next.
+
+**The goal is simple:** make an autonomous robot work reliably in the real
 world, outside the simulator, and write down every step so you can do the same.
 
 <div class="rln-imu" data-rln-imu>
@@ -17,7 +19,7 @@ a current sensor, a BNO055 IMU, a 2D LiDAR and a Raspberry Pi running ROS 2.
 <!-- Replace with a real photo: put robot.jpg in docs/_static/ and use
 ![The robot](_static/robot.jpg) -->
 
-<a class="rb-strip rb-strip--one" href="try.html#meet-caretta">
+<a class="rb-strip rb-strip--one" href="try#meet-caretta">
   <span class="rb-strip__head">Our robot<span>See it in 3D →</span></span>
   <span class="rb-strip__item rb-strip__item--now">Caretta<em><span class="rb-pulse"></span>Building now</em></span>
 </a>
@@ -29,7 +31,7 @@ through a house and let it draw the map. Then click anywhere and watch it find i
 
 No hardware needed, just a computer with Ubuntu 22.04.
 
-<p><a class="rln-card__button" href="try.html">Try Caretta now →</a></p>
+<p><a class="rln-card__button" href="try">Try Caretta now →</a></p>
 
 ## Concepts
 

@@ -294,6 +294,17 @@ Caretta plans a path and drives there. The terminal shows when it arrives:
 ```
 
 ```{raw} html
+<div class="fsr-mobile-only">
+```
+
+```{include} _snippets/signup-small.md
+```
+
+```{raw} html
+</div>
+```
+
+```{raw} html
 <div class="fsr-page"></div>
 <script src="_static/try-page.js" defer></script>
 ```
